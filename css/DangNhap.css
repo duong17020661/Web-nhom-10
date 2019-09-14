@@ -1,21 +1,11 @@
-body{
-  background: url("background.png") no-repeat center center fixed;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
+html{
   
 } 
 .h1,h2,h3,h4,h5,h6,a,p{
   font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 .navbar {
-  background: #0B173B;
-  font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  text-transform: uppercase;
-  font-weight: 700;
-  border: none;
-  height:12%;
+  
 }
 hr.question {
   color: #F2F2F2;
@@ -68,7 +58,7 @@ hr.question {
   height:50px;
 }
 #header1{
-  color: #F2F2F2;
+  color: #151515;
   position:relative; 
   margin-top: 10% ;
 }
