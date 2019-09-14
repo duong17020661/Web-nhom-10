@@ -19,6 +19,22 @@
             color: #ff0000;
             font-weight: bold;
         }
+
+        .card-header,
+        .dropright .dropdown-toggle {
+            background: linear-gradient(#99ccff, #b3ffff);
+        }
+
+        /**/
+        .dropdown-toggle p{
+            font-weight: bold;  
+        }
+        .dropdown-toggle{
+           float: left;
+            margin-top: 10px;
+            margin-bottom: 10px;
+            width: 200px;
+        }
     </style>
 </head>
 
@@ -34,42 +50,51 @@
                 <div class="col-md-9">
                     <div class="card-body-right">
                         <p class="card-title">
-                            <span class="oi" data-glyph="lock-locked"></span>
+                            <img src="images/icon-lock.png" alt="" width="20" height="20">
                             Phát triển ứng dụng Web int3306 7
                         </p>
-                        <p class="card-text">Mô tả: Thảo luận<br>
+                        <p class="card-text">
+                            <img src="images/mo-ta.jpg" alt="" width="15" height="15">
+                            Mô tả: Thảo luận<br>
+                            <img src="images/dang-boi.png" alt="" width="15" height="15">
                             Đăng bởi: <a href="">Nguyễn Việt Anh</a>
                         </p>
-                        <p class="card-text">Thời gian tạo: <a href="#" class="">10 ngày trước</a></p>
+                        <p class="card-text">
+                            <img src="images/thoi-gian.jpg" width="15" height="15" alt="">
+                            Thời gian tạo:
+                            <a href="#" class="">10 ngày trước</a>
+                        </p>
                     </div>
                 </div>
             </div>
         </div>
 
-        <div class="row">
-            <div class="col-md-12">
-                <nav class="navbar navbar-light bg-light">
-                    <div class="dropdown show">
-                        <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
-                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Danh sách câu hỏi
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                            <a class="dropdown-item" href="#">Danh sách câu hỏi A</a>
-                            <a class="dropdown-item" href="#">Danh sách câu hỏi B</a>
-                        </div>
-                    </div>
-                </nav>
-
-                <div class="col-md-12">
-                    <input class="form-control" type="text" placeholder="Search" aria-label="Search">
-                    <div>
-                        <a href="">Thời gian để hoàn thành dự án là bao nhiêu lâu?</a>
-
+        <div class="card">
+            <div class="card-header">
+                <div class="dropright">
+                    <button class="dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false">
+                        <p> Danh sách câu hỏi</p>
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item" href="#">Câu hỏi A</a>
+                        <a class="dropdown-item" href="#">Câu hỏi B</a>
+                        <a class="dropdown-item" href="#">Câu hỏi C</a>
                     </div>
                 </div>
             </div>
+            <div class="card-body">
+                <form class="form-inline">
+                    <input class="form-control" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-dark" type="submit">Search</button>
+                </form>
+            </div>
+
+
+
         </div>
+
+
     </div>
 
 
