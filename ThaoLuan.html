@@ -9,23 +9,40 @@
     <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
 
     <style>
-        
+        .card .row {
+            margin-top: 10px;
+            margin-left: 10px;
+            margin-bottom: 10px;
+        }
+
+        .card .row .card-body-right .card-title {
+            color: #ff0000;
+            font-weight: bold;
+        }
     </style>
 </head>
 
 <body>
     <div class="container">
-        <div class="row">
-            <div class="col-md-3">
-                <img src="images/q-and-a.jpg" width="180" height="120" class="d-inline-block align-top" alt="Q and A">
-            </div>
 
-            <div class="col-md-9">
-                <p>Phát triển ứng dụng Web int3306 7</p>
-                <p>Mô tả: Thảo luận<br>
-                    Đăng bởi: <a href="">Nguyễn Việt Anh</a>
-                </p>
-                <p>Thời gian tạo: <a href="">10 ngày trước</a></p>
+        <div class="card" width="">
+            <div class="row">
+                <div class="col-md-3">
+                    <img src="images/q-and-a.jpg" class="card-img d-none d-md-block d-lg-block d-xl-block"
+                        alt="Q and A">
+                </div>
+                <div class="col-md-9">
+                    <div class="card-body-right">
+                        <p class="card-title">
+                            <span class="oi" data-glyph="lock-locked"></span>
+                            Phát triển ứng dụng Web int3306 7
+                        </p>
+                        <p class="card-text">Mô tả: Thảo luận<br>
+                            Đăng bởi: <a href="">Nguyễn Việt Anh</a>
+                        </p>
+                        <p class="card-text">Thời gian tạo: <a href="#" class="">10 ngày trước</a></p>
+                    </div>
+                </div>
             </div>
         </div>
 
