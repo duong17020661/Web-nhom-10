@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="style.css">
     <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <style>
         .card .row {
             margin-top: 10px;
@@ -21,31 +21,70 @@
         }
 
         .card-header,
-        .dropright .dropdown-toggle {
+        .card-header .selectpicker {
             background: linear-gradient(#99ccff, #b3ffff);
         }
 
         /**/
-        .dropdown-toggle p{
-            font-weight: bold;  
+        .card-header .selectpicker {
+            font-weight: bold;
         }
-        .dropdown-toggle{
-           float: left;
-            margin-top: 10px;
-            margin-bottom: 10px;
-            width: 200px;
+
+        .card-header .selectpicker option {
+            font-weight: bold;
+        }
+
+        .card-header .selectpicker {
+            width: 250px;
+            height: 35px;
+
+        }
+
+        /*khung tìm kiếm*/
+        .has-search .form-control {
+            padding-left: 2.375rem;
+            width: 250px;
+        }
+
+        .has-search .form-control-feedback {
+            position: absolute;
+            z-index: 2;
+            display: block;
+            width: 2.375rem;
+            height: 2.375rem;
+            line-height: 2.375rem;
+            text-align: center;
+            pointer-events: none;
+            color: #aaa;
+        }
+
+        /*màu nền của card-body của phần danh sách câu hỏi*/
+        #question #question-body {
+            background-color: #f2f2f2;
+        }
+
+        /**/
+        .list-question .title {
+            font-weight: bold;
+            color: #ff0000;
+        }
+        .list-question{
+            font-size: 12px;
+        }
+        .list-question #question-item{
+            max-height: 100px;
         }
     </style>
 </head>
 
 <body>
     <div class="container">
-
+        <br>
         <div class="card" width="">
             <div class="row">
                 <div class="col-md-3">
                     <img src="images/q-and-a.jpg" class="card-img d-none d-md-block d-lg-block d-xl-block"
-                        alt="Q and A">
+                        alt="Q and A" height="150px" width="auto">
                 </div>
                 <div class="col-md-9">
                     <div class="card-body-right">
@@ -68,33 +107,55 @@
                 </div>
             </div>
         </div>
+        <br>
 
-        <div class="card">
-            <div class="card-header">
-                <div class="dropright">
-                    <button class="dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
-                        aria-haspopup="true" aria-expanded="false">
-                        <p> Danh sách câu hỏi</p>
-                    </button>
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <a class="dropdown-item" href="#">Câu hỏi A</a>
-                        <a class="dropdown-item" href="#">Câu hỏi B</a>
-                        <a class="dropdown-item" href="#">Câu hỏi C</a>
+        <!--Phần danh sách câu hỏi-->
+        <div class="card" id="question">
+            <!--phần head-->
+            <div class="card-header" id="question-header">
+                <select class="selectpicker">
+                    <option selected>Danh sách câu hỏi</option>
+                    <option value="">Câu hỏi A</option>
+                    <option value="">Câu hỏi B</option>
+                </select>
+            </div>
+            <!--phần body-->
+            <div class="card-body" id="question-body">
+                <div class="form-group has-search">
+                    <span class="fa fa-search form-control-feedback"></span>
+                    <input type="text" class="form-control" placeholder="Search">
+                </div>
+
+                <div class="list-question">
+                    <div class="card" id="question-item">
+                        <div class="card-body">
+                            <a href="#" class="title">Đã bạn nào sắp tốt nghiệp chưa?</a><br>
+                            <a href="#" class="trangthaicauhoi">Chưa có câu trả lời</a><br>
+                            <p>
+                                Đăng bởi:
+                                <a href="">Nguyễn Văn Đình</a>
+                                &emsp;Số câu trả lời: 0
+                                &emsp;Lượt thích: 0
+                            </p>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="card" id="question-item">
+                        <div class="card-body">
+                            <a href="#" class="title">Đã bạn nào sắp tốt nghiệp chưa?</a><br>
+                            <a href="#" class="trangthaicauhoi">Chưa có câu trả lời</a><br>
+                            <p>
+                                Đăng bởi:
+                                <a href="">Nguyễn Văn Đình</a>
+                                &emsp;Số câu trả lời: 0
+                                &emsp;Lượt thích: 0
+                            </p>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="card-body">
-                <form class="form-inline">
-                    <input class="form-control" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-dark" type="submit">Search</button>
-                </form>
-            </div>
-
-
 
         </div>
-
-
     </div>
 
 
