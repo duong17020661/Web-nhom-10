@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>Thảo luận</title>
+    <title>Thêm câu hỏi</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="style.css">
@@ -40,56 +40,46 @@
 
         }
 
-        /*khung tìm kiếm*/
-        .has-search .form-control {
-            padding-left: 2.375rem;
-            width: 250px;
-        }
-
-        .has-search .form-control-feedback {
-            position: absolute;
-            z-index: 2;
-            display: block;
-            width: 2.375rem;
-            height: 2.375rem;
-            line-height: 2.375rem;
-            text-align: center;
-            pointer-events: none;
-            color: #aaa;
-        }
 
         /*màu nền của card-body của phần danh sách câu hỏi*/
-        #question #question-body{
+        #question #question-body {
             background-color: #f2f2f2;
         }
 
-        /**/
-        .list-question .title {
+        /*căn trái cho lable và button chấp nhận*/
+        label {
+            float: left;
+            width: 100px;
             font-weight: bold;
-            color: #ff0000;
         }
 
-        .list-question {
-            font-size: 12px;
+        .button {
+            margin-left: 100px;
+          
         }
 
-        .list-question #question-item {
-            max-height: 100px;
+        /*chỉnh độ dài của ô input*/
+        input {
+            width: 300px;
+           
         }
 
-        /*nút tạo câu hỏi*/
-        #taocauhoi {
-            border-radius: 4px;
+        textarea {
+            width: 300px;
+        }
+
+        /*chỉnh nút quay lại bảng câu hỏi*/
+        #button-go-back {
             background-color: #4d79ff;
-            
             color: white;
-        }
+            
+            border-radius: 4px;
+       }
     </style>
-        
+
     <script>
-        //load trang tạo câu hỏi
-        function taocauhoi(){
-            window.location.replace('ThemTopic.html');  
+        function quaylaidanhsach(){
+            window.location.replace('ThaoLuan.html');
         };
     </script>
 </head>
@@ -163,62 +153,69 @@
                 <nav class="navbar" style="background-color:#00ffff">
                     <div>
                         <h4 class="my-0 mr-md-auto font-weight-normal"><img src="question.png" height="40px"
-                                width="auto" /> Danh sách các câu hỏi</h5>
-                    </div>
-                    <div class="dropdown">
-                        <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
-                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Các phiên - câu hỏi
-                        </a>
-
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                            <a class="dropdown-item" href="#">Phiên hỏi đáp hoạt động</a>
-                            <a class="dropdown-item" href="#">Phiên hỏi đáp đã đóng</a>
-                            <a class="dropdown-item" href="#">Tất cả các câu hỏi</a>
-                        </div>
+                                width="auto" />Thêm câu hỏi</h5>
                     </div>
                 </nav>
+
                 <!--phần body-->
                 <div class="card-body" id="question-body">
-                    <div class="">
-                        <button id="taocauhoi" class="btn" onclick="taocauhoi();">Tạo câu hỏi</button>
+                    <div>
+                        <button type="button" id="button-go-back" class="btn" onclick="quaylaidanhsach();">Quay lại bảng câu hỏi</button>
                     </div>
                     <br>
-                    <div class="search form-group has-search">
-                        <span class="fa fa-search form-control-feedback"></span>
-                        <input type="text" class="form-control" placeholder="Search">
-                    </div>
+                    <div class="card">
+                        <div class="card-body">
+                            <form action="">
+                                <br>
+                                <label class="chude">
+                                    <p>Chủ đề: </p>
+                                </label>
+                                <input type="text" id="chude">
+                                <span id="e-chude"></span>
+                                <br />
+                                <br>
+                                <label class="chitiet">
+                                    <p>Chi tiết: </p>
+                                </label>
+                                <textarea id="chitiet" cols="40" rows="5"></textarea>
+                                <span id="e-chitiet"></span>
+                                <br />
 
-                    <div class="list-question">
-                        <div class="card" id="question-item">
-                            <div class="card-body">
-                                <a href="#" class="title">Đã bạn nào sắp tốt nghiệp chưa?</a><br>
-                                <a href="#" class="trangthaicauhoi">Chưa có câu trả lời</a><br>
-                                <p>
-                                    Đăng bởi:
-                                    <a href="">Nguyễn Văn Đình</a>
-                                    &emsp;Số câu trả lời: 0
-                                    &emsp;Lượt thích: 0
-                                </p>
-                            </div>
-                        </div>
-                        <br>
-                        <div class="card" id="question-item">
-                            <div class="card-body">
-                                <a href="#" class="title">Đã bạn nào sắp tốt nghiệp chưa?</a><br>
-                                <a href="#" class="trangthaicauhoi">Chưa có câu trả lời</a><br>
-                                <p>
-                                    Đăng bởi:
-                                    <a href="">Nguyễn Văn Đình</a>
-                                    &emsp;Số câu trả lời: 0
-                                    &emsp;Lượt thích: 0
-                                </p>
-                            </div>
+                                <br>
+                                <label class="hoten">
+                                    <p>Họ và tên: </p>
+                                </label>
+                                <input type="text" id="hoten">
+                                <span id="e-hoten"></span>
+                                <br />
+
+                                <br>
+                                <label class="masinhvien">
+                                    <p>Mã sinh viên: </p>
+                                </label>
+                                <input type="text" id="masinhvien">
+                                <span id="e-masinhvien"></span>
+                                <br />
+                                <br>
+                                <label class="email">
+                                    <p>Email: </p>
+                                </label>
+                                <input type="text" id="email">
+                                <span id="e-email"></span>
+                                <br />
+                                <br>
+                                <div class="button">
+                                    <button id="chapnhan">Chấp nhận</button>
+                                    <button id="huybo">Huỷ bỏ</button>
+                                </div>
+                                <br />
+                            </form>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+
         <div class="text-center">
             <!-- Footer -->
             <a href="Trangchu.html#menu" style="border-radius: 75%;position:fixed;right:10%"><img src="btt.png"
