@@ -18,7 +18,36 @@
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 	
 	<style>
-		
+		.card .row {
+            margin-top: 10px;
+            margin-left: 10px;
+            margin-bottom: 10px;
+        }
+
+        .card .row .card-body-right .card-title {
+            color: #ff0000;
+            font-weight: bold;
+        }
+
+        .card-header,
+        .card-header .selectpicker {
+            background: linear-gradient(#99ccff, #b3ffff);
+        }
+
+        /**/
+        .card-header .selectpicker {
+            font-weight: bold;
+        }
+
+        .card-header .selectpicker option {
+            font-weight: bold;
+        }
+
+        .card-header .selectpicker {
+            width: 250px;
+            height: 35px;
+
+        }
 		/*khung tìm kiếm*/
         .has-search .form-control {
             padding-left: 2.375rem;
@@ -52,7 +81,20 @@
         .list-question #question-item{
             max-height: 100px;
         }
+		/*nút tạo câu hỏi*/
+        #taocauhoi {
+            border-radius: 4px;
+            background-color: #4d79ff;
+            
+            color: white;
+        }
     </style>
+	<script>
+        //load trang tạo câu hỏi
+        function taocauhoi(){
+            var addtopic = window.open("ThemTopic.html", "Google", "width=700px,height=500px");  
+        };
+    </script>
 </head>
 
 
@@ -80,84 +122,72 @@
 			</div>
 		</div>
 		<div class="shadow p-3 mb-5 bg-white rounded" style="margin-bottom:70px;"><!-- Main -->
-			<div class="card" id="question">
-				<nav class="navbar" style="background-color:#00ffff">
-					<div >
-						<h4 class="my-0 mr-md-auto font-weight-normal"><img src="question.png" height="40px" width="auto"/> Danh sách các phiên - các câu hỏi</h5>
-					</div>
-					<div class="dropdown">
-						<a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-						Các phiên - câu hỏi
-						</a>
+			<!--Phần danh sách câu hỏi-->
+            <div class="card" id="question">
+                <!--phần head-->
+                <nav class="navbar" style="background-color:#00ffff">
+                    <div>
+                        <h4 class="my-0 mr-md-auto font-weight-normal"><img src="question.png" height="40px"
+                                width="auto" /> Danh sách các câu hỏi</h5>
+                    </div>
+                    <div class="dropdown">
+                        <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Danh sách các câu hỏi
+                        </a>
 
-						<div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-							<a class="dropdown-item" href="#">Phiên hỏi đáp hoạt động</a>
-							<a class="dropdown-item" href="#">Phiên hỏi đáp đã đóng</a>
-							<a class="dropdown-item" href="#">Tất cả các câu hỏi</a>
-						</div>
-					</div>
-				</nav>
-			<!-- Menu -->
-				<div class="card-body" id="question-body">
-					<div class="form-group has-search">
-						<span class="fa fa-search form-control-feedback"></span>
-						<input type="text" class="form-control" placeholder="Search">
-					</div>
-
-					<div class="list-question">
-						<div class="card" id="question-item">
-							<div class="card-body">
-								<a href="#" class="title">Đã bạn nào sắp tốt nghiệp chưa?</a><br>
-								<a href="#" class="trangthaicauhoi">Chưa có câu trả lời</a><br>
-								<p>
-									Đăng bởi:
-									<a href="">Nguyễn Văn Đình</a>
-									&emsp;Số câu trả lời: 0
-									&emsp;Lượt thích: 0
-								</p>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                            <a class="dropdown-item" href="#">Câu hỏi dạng thường</a>
+                            <a class="dropdown-item" href="#">Câu hỏi dạng radiobox</a>
+                            <a class="dropdown-item" href="#">Câu hỏi dạng checkbox</a>
+                        </div>
+                    </div>
+                </nav>
+                <!--phần body-->
+                <div class="card-body" id="question-body">
+					<div class="row justify-content-between">
+						<div class="col-4">
+							<div style="float:left">
+								<button id="taocauhoi" class="btn" onclick="taocauhoi();">Tạo câu hỏi </button>
 							</div>
 						</div>
-						<br>
-						<div class="card" id="question-item">
-							<div class="card-body">
-								<a href="#" class="title">Đã bạn nào sắp tốt nghiệp chưa?</a><br>
-								<a href="#" class="trangthaicauhoi">Chưa có câu trả lời</a><br>
-								<p>
-									Đăng bởi:
-									<a href="">Nguyễn Văn Đình</a>
-									&emsp;Số câu trả lời: 0
-									&emsp;Lượt thích: 0
-								</p>
-							</div>
-						</div>
-						<br>
-						<div class="card" id="question-item">
-							<div class="card-body">
-								<a href="#" class="title">Đã bạn nào sắp tốt nghiệp chưa?</a><br>
-								<a href="#" class="trangthaicauhoi">Chưa có câu trả lời</a><br>
-								<p>
-									Đăng bởi:
-									<a href="">Nguyễn Văn Đình</a>
-									&emsp;Số câu trả lời: 0
-									&emsp;Lượt thích: 0
-								</p>
-							</div>
-						</div>
-						<br>
-						<div class="card" id="question-item">
-							<div class="card-body">
-								<a href="#" class="title">Đã bạn nào sắp tốt nghiệp chưa?</a><br>
-								<a href="#" class="trangthaicauhoi">Chưa có câu trả lời</a><br>
-								<p>
-									Đăng bởi:
-									<a href="">Nguyễn Văn Đình</a>
-									&emsp;Số câu trả lời: 0
-									&emsp;Lượt thích: 0
-								</p>
+                    <br>
+						<div class="col-4">
+							<div class="search form-group has-search" style="float:right">	
+								<span class="fa fa-search form-control-feedback"></span>
+								<input type="text" class="form-control" placeholder="Search">
 							</div>
 						</div>
 					</div>
-				</div>
+                    <div class="list-question">
+                        <div class="card" id="question-item">
+                            <div class="card-body">
+                                <a href="#" class="title">Đã bạn nào sắp tốt nghiệp chưa?</a><br>
+                                <a href="#" class="trangthaicauhoi">Chưa có câu trả lời</a><br>
+                                <p>
+                                    Đăng bởi:
+                                    <a href="">Nguyễn Văn Đình</a>
+                                    &emsp;Số câu trả lời: 0
+                                    &emsp;Lượt thích: 0
+                                </p>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="card" id="question-item">
+                            <div class="card-body">
+                                <a href="#" class="title">Đã bạn nào sắp tốt nghiệp chưa?</a><br>
+                                <a href="#" class="trangthaicauhoi">Chưa có câu trả lời</a><br>
+                                <p>
+                                    Đăng bởi:
+                                    <a href="">Nguyễn Văn Đình</a>
+                                    &emsp;Số câu trả lời: 0
+                                    &emsp;Lượt thích: 0
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
 		</div>
 		<div  class="text-center"> <!-- Footer -->
 		<a href="Trangchu.html#menu" style="border-radius: 75%;position:fixed;right:10%"><img src="btt.png" height="40px" width="auto" /></a>
@@ -170,7 +200,6 @@
 			</div>
 		</footer>
 		</div>
-	</div>
 	</div>
 		
 </body>
