@@ -89,7 +89,7 @@
     <script>
         //load trang tạo câu hỏi
         function taocauhoi(){
-            window.location.replace('ThemTopic.html');  
+            var addtopic = window.open("ThemTopic.html", "Google", "width=700px,height=500px");  
         };
     </script>
 </head>
@@ -168,7 +168,7 @@
                     <div class="dropdown">
                         <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Các phiên - câu hỏi
+                            Danh sách các câu hỏi
                         </a>
 
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
@@ -181,7 +181,7 @@
                 <!--phần body-->
                 <div class="card-body" id="question-body">
                     <div class="">
-                        <button id="taocauhoi" class="btn" onclick="taocauhoi();">Tạo câu hỏi</button>
+                        <button id="taocauhoi" class="btn" onclick="taocauhoi();">Tạo phiên thảo luận</button>
                     </div>
                     <br>
                     <div class="search form-group has-search">

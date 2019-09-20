@@ -9,228 +9,52 @@
     <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <style>
-        .card .row {
-            margin-top: 10px;
-            margin-left: 10px;
-            margin-bottom: 10px;
-        }
-
-        .card .row .card-body-right .card-title {
-            color: #ff0000;
-            font-weight: bold;
-        }
-
-        .card-header,
-        .card-header .selectpicker {
-            background: linear-gradient(#99ccff, #b3ffff);
-        }
-
-        /**/
-        .card-header .selectpicker {
-            font-weight: bold;
-        }
-
-        .card-header .selectpicker option {
-            font-weight: bold;
-        }
-
-        .card-header .selectpicker {
-            width: 250px;
-            height: 35px;
-
-        }
-
-
-        /*màu nền của card-body của phần danh sách câu hỏi*/
-        #question #question-body {
-            background-color: #f2f2f2;
-        }
-
         /*căn trái cho lable và button chấp nhận*/
         label {
             float: left;
             width: 100px;
             font-weight: bold;
         }
-
-        .button {
-            margin-left: 100px;
-          
-        }
-
-        /*chỉnh độ dài của ô input*/
-        input {
-            width: 300px;
-           
-        }
-
-        textarea {
-            width: 300px;
-        }
-
-        /*chỉnh nút quay lại bảng câu hỏi*/
-        #button-go-back {
-            background-color: #4d79ff;
-            color: white;
-            
-            border-radius: 4px;
-       }
+	   .container {
+			align:center;
+			width:600px;
+			height:500px;
+	   }
     </style>
 
     <script>
-        function quaylaidanhsach(){
-            window.location.replace('ThaoLuan.html');
-        };
     </script>
 </head>
 
-<body>
-    <div class="container">
-        <div id="menu">
-            <div
-                class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
-                <!-- Menu -->
+<body class="text-center">
+<div class="container">
+    <div class="shadow p-3 mb-5 bg-white rounded">
+		<div class="card" style="align:center" >
+			<div class="card-body">
+				<form action="">
+					<br>
+					<div class="form-group">
+						<label for="comment">Chủ đề:</label>
+						<textarea class="form-control" style="height:50px" id="comment"></textarea>
+					</div>
+					<br>
+					<br>
+					<div class="form-group">
+						<label for="comment">Chi tiết:</label>
+						<textarea class="form-control" style="height:150px" id="comment"></textarea>
+					</div>
+					<br><br>
+					<div class="button"style="align:center">
+						<input class="btn btn-primary" type="submit" value="Chấp nhận" style="width:100px">&nbsp
+						<input class="btn btn-primary" type="button" value="Hủy bỏ" style="width:100px">
+					</div>
+					<br>
+				</form>
+			</div>
+		</div>
 
-                <h5 class="my-0 mr-md-auto font-weight-normal">Hỏi đáp trực tuyến</h5>
-                <nav class="my-2 my-md-0 mr-md-3" style="border-right:solid 1px black;padding-right:30px">
-                    <a class="p-2 text-dark" href="#">Trang chủ</a>
-                    <a class="p-2 text-dark" href="#">Quản lý</a>
-                </nav>
-
-                <div class="dropdown">
-                    <!-- Drop down -->
-                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
-                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
-                        style="background-color:#e3f2fd;margin-right:60px;margin-left:60px;">
-                        <img src="user.png" height="20px" width="auto" />
-                    </button>
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <a class="dropdown-item" href="#"><img src="user.png" height="20px" width="auto" />&nbsp Tên
-                            thành viên</a>
-                        <a class="dropdown-item" href="#"><img src="Info.png" height="20px" width="auto" />&nbsp Cập
-                            nhật thông tin</a>
-                        <a class="dropdown-item" href="#"><img src="signout.png" height="20px" width="auto" />&nbsp Đăng
-                            xuất</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <br>
-        <div class="shadow p-3 mb-5 bg-white rounded" width="">
-            <div class="row">
-                <div class="col-md-3">
-                    <img src="images/q-and-a.jpg" class="card-img d-none d-md-block d-lg-block d-xl-block" alt="Q and A"
-                        height="150px" width="auto">
-                </div>
-                <div class="col-md-9">
-                    <div class="card-body-right">
-                        <p class="card-title">
-                            <img src="images/icon-lock.png" alt="" width="20" height="20">
-                            Phát triển ứng dụng Web int3306 7
-                        </p>
-                        <p class="card-text">
-                            <img src="images/mo-ta.jpg" alt="" width="15" height="15">
-                            Mô tả: Thảo luận<br>
-                            <img src="images/dang-boi.png" alt="" width="15" height="15">
-                            Đăng bởi: <a href="">Nguyễn Việt Anh</a>
-                        </p>
-                        <p class="card-text">
-                            <img src="images/thoi-gian.jpg" width="15" height="15" alt="">
-                            Thời gian tạo:
-                            <a href="#" class="">10 ngày trước</a>
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <br>
-        <div class="shadow p-3 mb-5 bg-white rounded" style="margin-bottom:70px;">
-            <!-- Main -->
-            <!--Phần danh sách câu hỏi-->
-            <div class="card" id="question">
-                <!--phần head-->
-                <nav class="navbar" style="background-color:#00ffff">
-                    <div>
-                        <h4 class="my-0 mr-md-auto font-weight-normal"><img src="question.png" height="40px"
-                                width="auto" />Thêm câu hỏi</h5>
-                    </div>
-                </nav>
-
-                <!--phần body-->
-                <div class="card-body" id="question-body">
-                    <div>
-                        <button type="button" id="button-go-back" class="btn" onclick="quaylaidanhsach();">Quay lại bảng câu hỏi</button>
-                    </div>
-                    <br>
-                    <div class="card">
-                        <div class="card-body">
-                            <form action="">
-                                <br>
-                                <label class="chude">
-                                    <p>Chủ đề: </p>
-                                </label>
-                                <input type="text" id="chude">
-                                <span id="e-chude"></span>
-                                <br />
-                                <br>
-                                <label class="chitiet">
-                                    <p>Chi tiết: </p>
-                                </label>
-                                <textarea id="chitiet" cols="40" rows="5"></textarea>
-                                <span id="e-chitiet"></span>
-                                <br />
-
-                                <br>
-                                <label class="hoten">
-                                    <p>Họ và tên: </p>
-                                </label>
-                                <input type="text" id="hoten">
-                                <span id="e-hoten"></span>
-                                <br />
-
-                                <br>
-                                <label class="masinhvien">
-                                    <p>Mã sinh viên: </p>
-                                </label>
-                                <input type="text" id="masinhvien">
-                                <span id="e-masinhvien"></span>
-                                <br />
-                                <br>
-                                <label class="email">
-                                    <p>Email: </p>
-                                </label>
-                                <input type="text" id="email">
-                                <span id="e-email"></span>
-                                <br />
-                                <br>
-                                <div class="button">
-                                    <button id="chapnhan">Chấp nhận</button>
-                                    <button id="huybo">Huỷ bỏ</button>
-                                </div>
-                                <br />
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="text-center">
-            <!-- Footer -->
-            <a href="Trangchu.html#menu" style="border-radius: 75%;position:fixed;right:10%"><img src="btt.png"
-                    height="40px" width="auto" /></a>
-            <footer class="pt-4 my-md-5 pt-md-5 border-top">
-                <div class="row">
-                    <div class="col-12 col-md">
-                        <img class="mb-2" src="footer.png" alt="" width="24" height="24">
-                        <small class="d-block mb-3 text-muted">&copy; 2017-2019</small>
-                    </div>
-                </div>
-            </footer>
-        </div>
     </div>
-
+</div>
 
 
 
