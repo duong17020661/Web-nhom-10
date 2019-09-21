@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>Thảo luận</title>
+    <title>Trang cá nhân</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="style.css">
@@ -89,7 +89,7 @@
     <script>
         //load trang tạo câu hỏi
         function taocauhoi(){
-            var addtopic = window.open("ThemTopic.html", "Google", "width=700px,height=500px");  
+            location.replace("ThaoLuan.html");  
         };
     </script>
 </head>
@@ -129,25 +129,25 @@
         <div class="shadow p-3 mb-5 bg-white rounded" width="">
             <div class="row">
                 <div class="col-md-3">
-                    <img src="images/q-and-a.jpg" class="card-img d-none d-md-block d-lg-block d-xl-block" alt="Q and A"
-                        height="150px" width="auto">
+                    <img src="avt.jpg" class="card-img d-none d-md-block d-lg-block d-xl-block" width="150" height="210"> 
                 </div>
                 <div class="col-md-9">
                     <div class="card-body-right">
-                        <p class="card-title">
-                            <img src="images/icon-lock.png" alt="" width="20" height="20">
-                            Phát triển ứng dụng Web int3306 7
-                        </p>
+                        <b class="card-title">
+                            <img src="user.png" alt="" width="20" height="20">
+                            <font color="0000FF">Mai Thế Đại (17020663)</font>
+                        </b>
                         <p class="card-text">
                             <img src="images/mo-ta.jpg" alt="" width="15" height="15">
-                            Mô tả: Thảo luận<br>
+                            Chức vụ: Thành viên<br>
                             <img src="images/dang-boi.png" alt="" width="15" height="15">
-                            Đăng bởi: <a href="">Nguyễn Việt Anh</a>
+                            Tổng số câu hỏi: 0<br>
+                            <img src="images/dang-boi.png" alt="" width="15" height="15">
+                            Câu hỏi chưa được trả lời: 0
                         </p>
                         <p class="card-text">
                             <img src="images/thoi-gian.jpg" width="15" height="15" alt="">
-                            Thời gian tạo:
-                            <a href="#" class="">10 ngày trước</a>
+                            Lần cuối đặt câu hỏi: N/A
                         </p>
                     </div>
                 </div>
@@ -161,66 +161,52 @@
                 <!--phần head-->
                 <nav class="navbar" style="background-color:#00ffff">
                     <div>
-                        <h4 class="my-0 mr-md-auto font-weight-normal"><img src="question.png" height="40px"
-                                width="auto" /> Danh sách các câu hỏi</h4>
+                        <h4 class="my-0 mr-md-auto font-weight-normal">Đăng bởi: Username </h4>
+						<p>20 giờ trước</p>
                     </div>
-                    <div class="dropdown">
-                        <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
-                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Danh sách các câu hỏi
-                        </a>
-
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                            <a class="dropdown-item" href="#">Câu hỏi dạng thường</a>
-                            <a class="dropdown-item" href="#">Câu hỏi dạng radiobox</a>
-                            <a class="dropdown-item" href="#">Câu hỏi dạng checkbox</a>
-                        </div>
-                    </div>
+                   
                 </nav>
+				
                 <!--phần body-->
-                <div class="card-body" id="question-body" style="background-color: #f2f2f2;">
-                    <div class="row justify-content-between">
+                <div class="card-body" id="question-body">
+					<div class="row justify-content-between">
 						<div class="col-4">
 							<div style="float:left">
-								<button id="taocauhoi" class="btn" onclick="taocauhoi();">Tạo câu hỏi</button>
-							</div>
-						</div>
-                    <br>
-						<div class="col-4">
-							<div class="search form-group has-search" style="float:right">	
-								<span class="fa fa-search form-control-feedback"></span>
-								<input type="text" class="form-control" placeholder="Search">
+								<button id="taocauhoi" class="btn" onclick="taocauhoi();">< Trở về bảng câu hỏi</button>
 							</div>
 						</div>
 					</div>
-
-                    <div class="list-question">
-                        <div class="card" id="question-item">
-                            <div class="card-body">
-                                <a href="CauHoi.html" class="title">Đã bạn nào sắp tốt nghiệp chưa?</a><br>
-                                <a href="#" class="trangthaicauhoi">Chưa có câu trả lời</a><br>
-                                <p>
-                                    Đăng bởi:
-                                    <a href="">Nguyễn Văn Đình</a>
-                                    &emsp;Số câu trả lời: 0
-                                    &emsp;Lượt thích: 0
-                                </p>
-                            </div>
-                        </div>
-                        <br>
-                        <div class="card" id="question-item">
-                            <div class="card-body">
-                                <a href="CauHoi.html" class="title">Đã bạn nào sắp tốt nghiệp chưa?</a><br>
-                                <a href="#" class="trangthaicauhoi">Chưa có câu trả lời</a><br>
-                                <p>
-                                    Đăng bởi:
-                                    <a href="">Nguyễn Văn Đình</a>
-                                    &emsp;Số câu trả lời: 0
-                                    &emsp;Lượt thích: 0
-                                </p>
-                            </div>
-                        </div>
+                    <div class="shadow p-3 mb-5 bg-white rounded"><!--câu hỏi -->
+						<div class="media">
+							<img src="avt.jpg" class="mr-3" alt="avatar" height="50px" width="auto">
+							<div class="media-body">
+								<h5 class="mt-0">Nội dung câu hỏi</h5>
+								Bạn đang học ở đâu?
+							</div>
+						</div>
+					</div>
+					<div class="shadow p-3 mb-5 bg-white rounded">	<!--câu trả lời -->
+                        <div class="media text-muted pt-3"><!--câu trả lời -->
+							<svg class="bd-placeholder-img mr-2 rounded" width="32" height="32" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 32x32"><title>Placeholder</title><rect width="100%" height="100%" fill="#007bff"/><text x="50%" y="50%" fill="#007bff" dy=".3em">32x32</text></svg>
+								<p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+									<strong class="d-block text-gray-dark">@username</strong>
+									abcxyz.
+								</p>
+						</div>
+					</div>
+					<div class="shadow p-3 mb-5 bg-white rounded">
+						<div class="media text-muted pt-3"><!--câu trả lời -->
+							<svg class="bd-placeholder-img mr-2 rounded" width="32" height="32" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 32x32"><title>Placeholder</title><rect width="100%" height="100%" fill="#007bff"/><text x="50%" y="50%" fill="#007bff" dy=".3em">32x32</text></svg>
+								<p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+									<strong class="d-block text-gray-dark">@username</strong>
+									abcxyz.
+								</p>
+						</div>
                     </div>
+					<div class="form-group"><!--điền câu trả lời -->
+						<label for="exampleFormControlTextarea1">Trả lời</label>
+						<textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+					</div>
                 </div>
             </div>
         </div>
@@ -238,13 +224,6 @@
             </footer>
         </div>
     </div>
-
-
-
-
-
-
-
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
         integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
         crossorigin="anonymous"></script>
