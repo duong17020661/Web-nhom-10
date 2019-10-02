@@ -15,37 +15,37 @@
 		<div class="row">
 			<div class="col-sm-3"></div>
 			<div class="col-sm-6">
-				<form action="xuly.php" method="POST">
+				<form action="xuly_dangky.php" method="POST">
 					<h2><img src="dhcn.jpg">&nbsp&nbsp&nbspĐăng ký tài khoản</h2>
 					<div class="form-group">
 						<label>Tên đăng nhập</label>
-						<input type="text" class="form-control" placeholder="Tên đăng nhập của bạn" required name="">
+						<input type="text" class="form-control" placeholder="Tên đăng nhập của bạn" required name="txtUsername">
 					</div>
 					<div class="form-group">
 						<label>Mật khẩu</label>
-						<input type="password" class="form-control" placeholder="Mật khẩu của bạn" required name="">
+						<input type="password" class="form-control" placeholder="Mật khẩu của bạn" required name="txtPassword">
 					</div>
 					<div class="form-group">
 						<label>Nhập lại mật khẩu</label>
 						<input type="password" class="form-control" placeholder="Nhập lại mật khẩu của bạn" required
-							name="">
+							name="txtRePassword">
 					</div>
 					
 					<div class="form-group">
 						<div class="form-row">
 							<div class="col">
 								<label>Tên</label>
-								<input type="text" class="form-control" placeholder="Tên của bạn" required name="">
+								<input type="text" class="form-control" placeholder="Tên của bạn" required name="txtFirstname">
 							</div>
 							<div class="col">
 								<label>Họ</label>
-								<input type="text" class="form-control" placeholder="Họ của bạn" required name="">
+								<input type="text" class="form-control" placeholder="Họ của bạn" required name="txtLastname">
 							</div>
 						</div>
 					</div>
 					<div class="form-row align-items-center">
 						<label style="width: 20%">&nbspNgày sinh: </label>
-						<select class="custom-select mr-sm-2" id="inlineFormCustomSelect" style="width: 25%">
+						<select class="custom-select mr-sm-2" id="inlineFormCustomSelect" name="txtBirthday1" style="width: 25%">
 							<option selected>Ngày</option>
 							<option value="1">1</option>
 							<option value="2">2</option>
@@ -60,14 +60,14 @@
 							<option value="11">11</option>
 							<option value="12">12</option>
 						</select>
-						<select class="custom-select mr-sm-2" id="inlineFormCustomSelect" style="width: 25%">
+						<select class="custom-select mr-sm-2" id="inlineFormCustomSelect" name="txtBirthday2" style="width: 25%">
 							<option selected>Tháng</option>
 							<option value="1">Tháng 1</option>
 							<option value="2">Tháng 2</option>
 							<option value="3">Tháng 3</option>
 							<option value="4">Tháng 4</option>
 						</select>
-						<select class="custom-select mr-sm-2" id="inlineFormCustomSelect" style="width: 25%">
+						<select class="custom-select mr-sm-2" id="inlineFormCustomSelect" name="txtBirthday3" style="width: 25%">
 							<option selected>Năm</option>
 							<option value="1">1999</option>
 							<option value="2">2000</option>
@@ -79,24 +79,24 @@
 					</div>
 					<div class="form-group">
 						<label>Email</label>
-						<input type="email" class="form-control" placeholder="Email của bạn" required name="">
+						<input type="email" class="form-control" placeholder="Email của bạn" required name="txtEmail">
 					</div>
 					<div class="form-group">
 						<label>Giới tính</label>
 						<div class="row" data-toggle="buttons">
 							<div class="col">
 								<label class="btn btn-outline-secondary">Nam
-									<input type="radio" name="gioi-tinh" value="Nam">
+									<input type="radio" name="txtGender" value="Nam">
 								</label>
 							</div>
 							<div class="col">
 								<label class="btn btn-outline-secondary">Nữ
-									<input type="radio" name="gioi-tinh" value="Nữ">
+									<input type="radio" name="txtGender" value="Nữ">
 								</label>
 							</div>
 							<div class="col">
 								<label class="btn btn-outline-secondary">Khác
-									<input type="radio" name="gioi-tinh" value="Khác">
+									<input type="radio" name="txtGender" value="Khác">
 								</label>
 							</div>
 						</div>
@@ -106,7 +106,7 @@
 						<label>Tôi đồng ý điều khoản sử dụng</label>
 					</div>
 					<div class="form-group">
-						<button class="btn btn-success" type="submit">Đăng ký</button>
+						<button class="btn btn-success" type="submit" name="signup">Đăng ký</button>
 					</div>
 				</form>
 			</div>
