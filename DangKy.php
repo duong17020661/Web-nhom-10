@@ -15,7 +15,7 @@
 		<div class="row">
 			<div class="col-sm-3"></div>
 			<div class="col-sm-6">
-				<form action="xuly_dangky.php" method="POST">
+				<form method="post" action="xuly_dangky.php">
 					<h2><img src="dhcn.jpg">&nbsp&nbsp&nbspĐăng ký tài khoản</h2>
 					<div class="form-group">
 						<label>Tên đăng nhập</label>
@@ -45,7 +45,7 @@
 					</div>
 					<div class="form-row align-items-center">
 						<label style="width: 20%">&nbspNgày sinh: </label>
-						<select class="custom-select mr-sm-2" id="inlineFormCustomSelect" name="txtBirthday1" style="width: 25%">
+						<select class="custom-select mr-sm-2" id="inlineFormCustomSelect" name="txtBirthday1" style="width: 25%" required>
 							<option selected>Ngày</option>
 							<option value="1">1</option>
 							<option value="2">2</option>
@@ -60,30 +60,30 @@
 							<option value="11">11</option>
 							<option value="12">12</option>
 						</select>
-						<select class="custom-select mr-sm-2" id="inlineFormCustomSelect" name="txtBirthday2" style="width: 25%">
+						<select class="custom-select mr-sm-2" id="inlineFormCustomSelect" name="txtBirthday2" style="width: 25%" required>
 							<option selected>Tháng</option>
 							<option value="1">Tháng 1</option>
 							<option value="2">Tháng 2</option>
 							<option value="3">Tháng 3</option>
 							<option value="4">Tháng 4</option>
 						</select>
-						<select class="custom-select mr-sm-2" id="inlineFormCustomSelect" name="txtBirthday3" style="width: 25%">
+						<select class="custom-select mr-sm-2" id="inlineFormCustomSelect" name="txtBirthday3" style="width: 25%" required>
 							<option selected>Năm</option>
-							<option value="1">1999</option>
-							<option value="2">2000</option>
-							<option value="3">2001</option>
-							<option value="4">2002</option>
-							<option value="5">2003</option>
-							<option value="6">2004</option>
+							<option value="1999">1999</option>
+							<option value="2000">2000</option>
+							<option value="2001">2001</option>
+							<option value="2002">2002</option>
+							<option value="2003">2003</option>
+							<option value="2004">2004</option>
 						</select>
 					</div>
 					<div class="form-group">
 						<label>Email</label>
-						<input type="email" class="form-control" placeholder="Email của bạn" required name="txtEmail">
+						<input type="email" class="form-control" placeholder="Email của bạn" required name="txtEmail" >
 					</div>
-					<div class="form-group">
+					<div class="form-group" required>
 						<label>Giới tính</label>
-						<div class="row" data-toggle="buttons">
+						<div class="row">
 							<div class="col">
 								<label class="btn btn-outline-secondary">Nam
 									<input type="radio" name="txtGender" value="Nam">
@@ -116,7 +116,7 @@
 
 	<!-- Load jquery trước khi load bootstrap js -->
 	<script src="jquery-3.3.1.min.js"></script>
-	<script src="bootstrap/js/bootstrap.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
 
 </body>
 

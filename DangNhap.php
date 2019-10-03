@@ -1,3 +1,46 @@
+<?php
+    // below code checks whether the form is submitted
+    // using the POST method or not
+    session_start();
+    if($_SERVER["REQUEST_METHOD"] == "POST")
+    {if(isset($_POST["logout"]))
+        {
+            // below code is used to destroy all the session
+            session_destroy();
+            // below code is used to redirect users to codescracker.php page
+            header("location: TrangChu.html");
+            // below code is used to skip executing the remaining code
+            // after this
+            exit();
+        }
+        $username = $password = "";
+        $username = $_POST["username"];
+        $username = filter_login_input($username);
+        $password = $_POST["password"];
+        $password1 = md5($password);
+        $password1 = filter_login_input($password1);
+        
+        $qry = "select * from user where username='$username' and password='$password1'";
+        $res = $conn->query($qry);
+        if(mysqli_num_rows($res)>0)
+        {
+            $_SESSION['login'] = $username;
+        }
+        else 
+        {
+            $loginCheck = "No";
+        }
+    }
+    function filter_login_input($loginData)
+    {
+        $loginData = trim($loginData);
+        $loginData = stripslashes($loginData);
+        $loginData = htmlspecialchars($loginData);
+        return $loginData;
+    }
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,6 +54,19 @@
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body >
+
+<?php
+  if(isset($_SESSION['login']))
+  {
+    echo "<p>You are successfully logged in.</p>";
+    echo "<p>Now you can access the admin page.</p>";
+    echo "<form method=\"post\">";
+    echo "<input type=\"submit\" name=\"logout\" value=\"LogOut\">";
+    echo "</form>";
+    exit();
+  }
+?>
+
 	<div class = "container">
 		<div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
       <!-- Menu -->
@@ -52,11 +108,17 @@
       <div class="panel-body form-signin">
         <input placeholder="Tên đăng nhập" class = "form-control" name="username" type="text">
         <input placeholder="Mật khẩu" class="form-control" name="password" type="password">
+        <?php
+        if(isset($loginCheck))
+        {
+            echo "Invalid data<br/>";
+        }
+    ?>
         <br></br>
         <div class="row">
           <div class="col-md-6"></div>
           <div class="col-md-2">
-            <input type="submit" class="btn btn-success" value="ĐĂNG NHẬP">
+            <button class="btn btn-success" type="submit" name="login">Đăng nhập</button>
           </div>
         </div>
       </div>
