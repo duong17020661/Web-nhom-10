@@ -96,7 +96,6 @@
 
 
 <body>
-
 	<div class="container">
 		<div id="menu">
 			<div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">	<!-- Menu -->
@@ -112,9 +111,14 @@
 						<img src="user.png" height="20px" width="auto" />
 					</button>
 					<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-						<a class="dropdown-item" href="#"><img src="user.png" height="20px" width="auto" />&nbsp Tên thành viên</a>
-						<a class="dropdown-item" href="#"><img src="Info.png" height="20px" width="auto" />&nbsp Cập nhật thông tin</a>
-						<a class="dropdown-item" href="#"><img src="signout.png" height="20px" width="auto" />&nbsp Đăng xuất</a>
+                        <form method="GET" action="DangNhap.php">
+                            <a class="dropdown-item" href="#"><img src="user.png" height="20px" width="auto" />&nbsp <?php echo $_SESSION['login'] ?></a>
+                            <a class="dropdown-item" href="#"><img src="Info.png" height="20px" width="auto" />&nbsp Cập nhật thông tin</a>
+                            <hr></hr>
+                         </form>
+                        <form method="POST" action="DangNhap.php">
+                            <a class="dropdown-item" href="DangNhap.php"><input type="submit" class="btn btn-success" name="logout" value="ĐĂNG XUẤT"></a>
+                        </form>
 					</div>
 				</div>
 			</div>
@@ -199,7 +203,7 @@
 		</footer>
 		</div>
 	</div>
-		
+
 </body>
 
 </html>
