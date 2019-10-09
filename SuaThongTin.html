@@ -9,62 +9,82 @@
     <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <style>
-        .card .row {
-            margin-top: 10px;
-            margin-left: 10px;
-            margin-bottom: 10px;
-        }
-
-        .card .row .card-body-right .card-title {
-            color: #ff0000;
-            font-weight: bold;
-        }
-
-        .card {
-            width: 60%;
-            margin-left: 20%;
-            margin-top: 10%;
-        }
-
-        .card-header,
-        .card-header .selectpicker {
-            background: linear-gradient(#99ccff, #b3ffff);
-        }
-
-        /**/
-        .card-header .selectpicker {
-            font-weight: bold;
-        }
-
-        .card-header .selectpicker option {
-            font-weight: bold;
-        }
-
-        .card-header .selectpicker {
-            width: 250px;
-            height: 35px;
-
-        }
-
-        /*màu nền của card-body của phần danh sách câu hỏi*/
-        #question #question-body {
-            background-color: #f2f2f2;
-        }
-
-        /**/
-        .list-question .title {
-            font-weight: bold;
-            color: #ff0000;
-        }
-
-        .list-question {
-            font-size: 12px;
-        }
-
-        .list-question #question-item {
-            max-height: 100px;
-        }
-    </style>
+            .card .row {
+                margin-top: 10px;
+                margin-left: 10px;
+                margin-bottom: 10px;
+            }
+    
+            .card .row .card-body-right .card-title {
+                color: #ff0000;
+                font-weight: bold;
+            }
+    
+            .card-header,
+            .card-header .selectpicker {
+                background: linear-gradient(#99ccff, #b3ffff);
+            }
+    
+            /**/
+            .card-header .selectpicker {
+                font-weight: bold;
+            }
+    
+            .card-header .selectpicker option {
+                font-weight: bold;
+            }
+    
+            .card-header .selectpicker {
+                width: 250px;
+                height: 35px;
+    
+            }
+    
+            /*khung tìm kiếm*/
+            .has-search .form-control {
+                padding-left: 2.375rem;
+                width: 250px;
+            }
+    
+            .has-search .form-control-feedback {
+                position: absolute;
+                z-index: 2;
+                display: block;
+                width: 2.375rem;
+                height: 2.375rem;
+                line-height: 2.375rem;
+                text-align: center;
+                pointer-events: none;
+                color: #aaa;
+            }
+    
+            /*màu nền của card-body của phần danh sách câu hỏi*/
+            #question #question-body {
+                background-color: #f2f2f2;
+            }
+    
+            /**/
+            .list-question .title {
+                font-weight: bold;
+                color: #ff0000;
+            }
+    
+            .list-question {
+                font-size: 12px;
+            }
+    
+            .list-question #question-item {
+                max-height: 100px;
+            }
+    
+            /*nút tạo câu hỏi*/
+            #taocauhoi {
+                border-radius: 4px;
+                background-color: #4d79ff;
+    
+                color: white;
+            }
+        </style>
 </head>
 
 <body>

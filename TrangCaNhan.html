@@ -19,9 +19,9 @@
         }
 
         .card {
-            width: 85%;
-            margin-left: 10%;
-            margin-top: 10%;
+            width: 103.9%;
+            margin-left: -1.9%;
+            margin-top: 0%;
         }
 
         .card .row .card-body-right .card-title {
@@ -126,9 +126,9 @@
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                         <a class="dropdown-item" href="#"><img src="user.png" height="20px" width="auto" />&nbsp Tên
                             thành viên</a>
-                        <button class="dropdown-item" type="button" class="btn btn-primary" data-toggle="modal"
-                            data-target="#myModal"><img src="Info.png" height="20px" width="auto" />&nbsp Cập nhật thông
-                            tin</button>
+                        <a class="dropdown-item" href="#" data-toggle="modal" data-target="#myModal"><img src="Info.png"
+                                height="20px" width="auto" />&nbsp Cập nhật thông
+                            tin</a>
 
                         <a class="dropdown-item" href="#"><img src="signout.png" height="20px" width="auto" />&nbsp Đăng
                             xuất</a>
@@ -138,116 +138,113 @@
         </div>
         <div class="modal fade" id="myModal">
             <div class="modal-dialog modal-lg">
-                <div class="container" id="myForm">
-                    <!--Phần danh sách câu hỏi-->
-                    <div class="card">
-                        <!--phần head-->
-                        <nav class="navbar" style="background-color:#00ffff">
-                            <div style="float: left">
-                                <h4 class="my-0 mr-md-auto font-weight-normal">Cập nhật thông tin cá
-                                    nhân</h4>
+                <div class="modal-content">
+                    <!-- Modal Header -->
+                    <div class="modal-header"  style="background-color:#00ffff">
+                            <h4 class="modal-title" >Cập nhật thông tin</h4>
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                          </div>
+                    <!-- Modal body -->
+                    <div class="container" id="myForm">
+                        <div class="card" id="form">
+                            <!--phần body-->
+                            <div class="card-body" id="question-body" style="background-color: #f2f2f2">
+                                <form>
+                                    <div class="form-group row">
+                                        <label for="staticUser" class="col-sm-3 col-form-label">Tên đăng
+                                            nhập</label>
+                                        <div class="col-sm-9">
+                                            <input type="text" readonly class="form-control-plaintext" id="staticEmail"
+                                                value="17020663">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="inputhoten" class="col-sm-3 col-form-label">Họ và
+                                            tên</label>
+                                        <div class="col-sm-9">
+                                            <input type="text" class="form-control" id="inputhoten"
+                                                placeholder="Mai Thế Đại">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="inputemail" class="col-sm-3 col-form-label">Email</label>
+                                        <div class="col-sm-9">
+                                            <input type="text" class="form-control" id="inputemail"
+                                                placeholder="daibengi19@gmail.com">
+                                        </div>
+                                    </div>
+                                </form>
+                                <button type="button" class="btn btn-primary btn-lg" style="margin-left:84%">Cập
+                                    nhật</button>
                             </div>
-                            <div style="float: right">
-                                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                            </div>
-                        </nav>
-                        <!--phần body-->
-                        <div class="card-body" id="question-body" style="background-color: #f2f2f2">
-                            <form>
-                                <div class="form-group row">
-                                    <label for="staticUser" class="col-sm-3 col-form-label">Tên đăng
-                                        nhập</label>
-                                    <div class="col-sm-9">
-                                        <input type="text" readonly class="form-control-plaintext" id="staticEmail"
-                                            value="17020663">
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <label for="inputhoten" class="col-sm-3 col-form-label">Họ và
-                                        tên</label>
-                                    <div class="col-sm-9">
-                                        <input type="hoten" class="form-control" id="inputhoten"
-                                            placeholder="Mai Thế Đại">
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <label for="inputemail" class="col-sm-3 col-form-label">Email</label>
-                                    <div class="col-sm-9">
-                                        <input type="email" class="form-control" id="inputemail"
-                                            placeholder="daibengi19@gmail.com">
-                                    </div>
-                                </div>
-                            </form>
-                            <button type="button" class="btn btn-primary btn-lg" style="margin-left:81%">Cập
-                                nhật</button>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <br>
-        <div class="shadow p-3 mb-5 bg-white rounded" width="">
-            <div class="row">
-                <div class="col-md-3">
-                    <img src="avt.jpg" class="card-img d-none d-md-block d-lg-block d-xl-block" width="150"
-                        height="210">
-                </div>
-                <div class="col-md-9">
-                    <div class="card-body-right">
-                        <b class="card-title">
-                            <img src="user.png" alt="" width="20" height="20">
-                            <front color="0000FF">Mai Thế Đại (17020663)</front>
-                        </b>
-                        <p class="card-text">
-                            <img src="images/mo-ta.jpg" alt="" width="15" height="15">
-                            Chức vụ: Thành viên<br>
-                            <img src="images/dang-boi.png" alt="" width="15" height="15">
-                            Tổng số câu hỏi: 0<br>
-                            <img src="images/dang-boi.png" alt="" width="15" height="15">
-                            Câu hỏi chưa được trả lời: 0
-                        </p>
-                        <p class="card-text">
-                            <img src="images/thoi-gian.jpg" width="15" height="15" alt="">
-                            Lần cuối đặt câu hỏi: N/A
-                        </p>
-                    </div>
+    </div>
+    <br>
+    <div class="shadow p-3 mb-5 bg-white rounded" width="">
+        <div class="row">
+            <div class="col-md-3">
+                <img src="avt.jpg" class="card-img d-none d-md-block d-lg-block d-xl-block" width="150" height="210">
+            </div>
+            <div class="col-md-9">
+                <div class="card-body-right">
+                    <b class="card-title">
+                        <img src="user.png" alt="" width="20" height="20">
+                        <front color="0000FF">Mai Thế Đại (17020663)</front>
+                    </b>
+                    <p class="card-text">
+                        <img src="images/mo-ta.jpg" alt="" width="15" height="15">
+                        Chức vụ: Thành viên<br>
+                        <img src="images/dang-boi.png" alt="" width="15" height="15">
+                        Tổng số câu hỏi: 0<br>
+                        <img src="images/dang-boi.png" alt="" width="15" height="15">
+                        Câu hỏi chưa được trả lời: 0
+                    </p>
+                    <p class="card-text">
+                        <img src="images/thoi-gian.jpg" width="15" height="15" alt="">
+                        Lần cuối đặt câu hỏi: N/A
+                    </p>
                 </div>
             </div>
         </div>
-        <br>
-        <div class="shadow p-3 mb-5 bg-white rounded" style="margin-bottom:70px;">
-            <!-- Main -->
-            <!--Phần danh sách câu hỏi-->
-            <div class="card" id="question">
-                <!--phần head-->
-                <nav class="navbar" style="background-color:#00ffff">
-                    <div>
-                        <h4 class="my-0 mr-md-auto font-weight-normal"><img src="question.png" height="40px"
-                                width="auto" /> Danh sách các câu hỏi</h5>
-                    </div>
+    </div>
+    <br>
+    <div class="shadow p-3 mb-5 bg-white rounded" style="margin-bottom:70px;">
+        <!-- Main -->
+        <!--Phần danh sách câu hỏi-->
+        <div class="card" id="question">
+            <!--phần head-->
+            <nav class="navbar" style="background-color:#00ffff">
+                <div>
+                    <h4 class="my-0 mr-md-auto font-weight-normal"><img src="question.png" height="40px" width="auto" />
+                        Danh sách các câu hỏi</h5>
+                </div>
 
-                </nav>
-                <!--phần body-->
-                <div class="card-body" id="question-body">
-                    <div class="text-center">
-                        <p>Không có câu hỏi để hiển thị</p>
-                    </div>
+            </nav>
+            <!--phần body-->
+            <div class="card-body" id="question-body">
+                <div class="text-center">
+                    <p>Không có câu hỏi để hiển thị</p>
                 </div>
             </div>
         </div>
-        <div class="text-center">
-            <!-- Footer -->
-            <a href="Trangchu.html#menu" style="border-radius: 75%;position:fixed;right:10%"><img src="btt.png"
-                    height="40px" width="auto" /></a>
-            <footer class="pt-4 my-md-5 pt-md-5 border-top">
-                <div class="row">
-                    <div class="col-12 col-md">
-                        <img class="mb-2" src="footer.png" alt="" width="24" height="24">
-                        <small class="d-block mb-3 text-muted">&copy; 2017-2019</small>
-                    </div>
+    </div>
+    <div class="text-center">
+        <!-- Footer -->
+        <a href="Trangchu.html#menu" style="border-radius: 75%;position:fixed;right:10%"><img src="btt.png"
+                height="40px" width="auto" /></a>
+        <footer class="pt-4 my-md-5 pt-md-5 border-top">
+            <div class="row">
+                <div class="col-12 col-md">
+                    <img class="mb-2" src="footer.png" alt="" width="24" height="24">
+                    <small class="d-block mb-3 text-muted">&copy; 2017-2019</small>
                 </div>
-            </footer>
-        </div>
+            </div>
+        </footer>
+    </div>
     </div>
 
 </body>
