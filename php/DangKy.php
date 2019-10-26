@@ -28,7 +28,7 @@
 					<div class="form-group">
 						<label>Nhập lại mật khẩu</label>
 						<input type="password" class="form-control" placeholder="Nhập lại mật khẩu của bạn" required
-							name="txtRePassword">
+						name="txtRePassword">
 					</div>
 					
 					<div class="form-group">

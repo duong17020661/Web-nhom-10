@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html>
 
@@ -15,45 +16,48 @@
             width: 100px;
             font-weight: bold;
         }
-	   .container {
-			align:center;
-			width:600px;
-			height:500px;
-	   }
-    </style>
-
-    <script>
+        .container {
+         align:center;
+         width:600px;
+         height:500px;
+     }
+ </style>
+ <script>
+        //load trang tạo câu hỏi
+        function taocauhoi(){
+            var addtopic = window.close("ThemTopic.php", "Google", "width=700px,height=500px");
+        };
     </script>
 </head>
 
 <body class="text-center">
-<div class="container">
-    <div class="shadow p-3 mb-5 bg-white rounded">
-		<div class="card" style="align:center" >
-			<div class="card-body">
-				<form method="post" action="xuly_ThemTopic.php">
-					<br>
-					<div class="form-group">
-						<label for="comment">Chủ đề:</label>
-						<textarea class="form-control" style="height:50px" id="comment" required name="topic"></textarea>
-					</div>
-					<br>
-					<br>
-					<div class="form-group">
-						<label for="comment">Chi tiết:</label>
-						<textarea class="form-control" style="height:150px" id="comment" required name="detail"></textarea>
-					</div>
-					<br><br>
-					<div class="button"style="align:center">
-						<input class="btn btn-primary" type="submit" value="Chấp nhận" style="width:100px">&nbsp
-						<input class="btn btn-primary" type="button" value="Hủy bỏ" style="width:100px">
-					</div>
-					<br>
-				</form>
-			</div>
-		</div>
+    <div class="container">
+        <div class="shadow p-3 mb-5 bg-white rounded">
+          <div class="card" style="align:center" >
+             <div class="card-body">
+                <form method="post" action="xuly_ThemTopic.php">
+                   <br>
+                   <div class="form-group">
+                      <label for="comment">Chủ đề:</label>
+                      <textarea class="form-control" style="height:50px" id="comment" required name="topic"></textarea>
+                  </div>
+                  <br>
+                  <br>
+                  <div class="form-group">
+                      <label for="comment">Chi tiết:</label>
+                      <textarea class="form-control" style="height:150px" id="comment" required name="detail"></textarea>
+                  </div>
+                  <br><br>
+                  <div class="button"style="align:center">
+                      <input class="btn btn-primary" type="submit"  value="Chấp nhận" style="width:100px" name="create">&nbsp
+                      <input class="btn btn-primary" type="button" onclick="taocauhoi()" value="Hủy bỏ" style="width:100px">
+                  </div>
+                  <br>
+              </form>
+          </div>
+      </div>
 
-    </div>
+  </div>
 </div>
 
 
@@ -61,15 +65,15 @@
 
 
 
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-        crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-        crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
-        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-        crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+crossorigin="anonymous"></script>
 </body>
 
 </html>
