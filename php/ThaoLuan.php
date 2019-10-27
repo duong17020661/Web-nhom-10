@@ -1,4 +1,5 @@
 <?php session_start(); ?>
+
 <!DOCTYPE html>
 <html>
 
@@ -127,8 +128,53 @@
                 </div>
             </div>
         </div>
+<?php
+$conn = mysqli_connect('localhost', 'root', '', 'q_a');
+$id = mysqli_real_escape_string($conn, $_GET['id']);
+$query = "SELECT * FROM topic WHERE id_topic = $id";
+$result = mysqli_query($conn, $query);
+$post = mysqli_fetch_assoc($result);
+if($_SERVER["REQUEST_METHOD"] == "POST")
+{
+    date_default_timezone_set("Asia/Ho_Chi_Minh");
+	$question = $_POST["question"];
+	$id_topic = $id;
+	$detail = $_POST["detail"];
+	$user = $_SESSION['login'];
+	$time = getdate(date("U"));
+	if(isset($_POST["create"])){
+		$qry = "insert into question (question,detail,user,time,id_topic) values('$question', '$detail','$user','$time','$id_topic');";
+		$res = $conn->query($qry);
+		if($res)
+		{
+			echo"a";
+		}
+		else{
+			echo"<p>Fail.$conn->error.</p>";
+		}
+	}
+}
 
-        <br>
+$res1 = mysqli_query($conn, "SELECT id_question FROM question");
+	if($res1->num_rows >0){
+		while ($row = mysqli_fetch_assoc($res1)){
+			$question_id = $row['id_question'];
+			$remove = $row['id_question']."rm";
+			$edit = $row['id_question']."edit";
+			if(isset($_POST["$remove"])){
+				$res2 = mysqli_query($conn, "DELETE FROM question WHERE id_question = $question_id");
+				if($res2)
+				{
+
+				}
+				else{
+					echo"<p>Fail.$connect->error.</p>";
+				}
+			}
+		}
+	}
+?>
+
         <div class="shadow p-3 mb-5 bg-white rounded" width="">
             <div class="row">
                 <div class="col-md-3">
@@ -139,18 +185,18 @@
                     <div class="card-body-right">
                         <p class="card-title">
                             <img src="images/icon-lock.png" alt="" width="20" height="20">
-                            Phát triển ứng dụng Web int3306 7
+                            <?php echo $post['topic']; ?>
                         </p>
                         <p class="card-text">
                             <img src="images/mo-ta.jpg" alt="" width="15" height="15">
-                            Mô tả: Thảo luận<br>
+                            Mô tả: <?php echo $post['detail']; ?><br>
                             <img src="images/dang-boi.png" alt="" width="15" height="15">
-                            Đăng bởi: <a href="">Nguyễn Việt Anh</a>
+                            Đăng bởi: <a href=""><?php echo $post['user']; ?></a>
                         </p>
                         <p class="card-text">
                             <img src="images/thoi-gian.jpg" width="15" height="15" alt="">
                             Thời gian tạo:
-                            <a href="#" class="">10 ngày trước</a>
+                            <a href="#" class=""><?php echo $post['time']; ?></a>
                         </p>
                     </div>
                 </div>
@@ -185,7 +231,7 @@
                     <div class="row justify-content-between">
 						<div class="col-4">
 							<div style="float:left">
-								<button id="taocauhoi" class="btn" onclick="taocauhoi();">Tạo câu hỏi</button>
+								<button id="taocauhoi" type="button" class="btn btn-info"><a  href="http://localhost/Web-nhom-10/php/TaoCauHoi.php?id=<?php echo $id?>" style="color:white;">Tạo câu hỏi</a></button>
 							</div>
 						</div>
                     <br>
@@ -196,37 +242,100 @@
 							</div>
 						</div>
 					</div>
+<?php
+$conn = mysqli_connect('localhost', 'root', '', 'q_a');
 
-                    <div class="list-question">
-                        <div class="card" id="question-item">
-                            <div class="card-body">
-                                <a href="CauHoi.html" class="title">Đã bạn nào sắp tốt nghiệp chưa?</a><br>
-                                <a href="#" class="trangthaicauhoi">Chưa có câu trả lời</a><br>
-                                <p>
-                                    Đăng bởi:
-                                    <a href="">Nguyễn Văn Đình</a>
-                                    &emsp;Số câu trả lời: 0
-                                    &emsp;Lượt thích: 0
-                                </p>
-                            </div>
-                        </div>
-                        <br>
-                        <div class="card" id="question-item">
-                            <div class="card-body">
-                                <a href="CauHoi.html" class="title">Đã bạn nào sắp tốt nghiệp chưa?</a><br>
-                                <a href="#" class="trangthaicauhoi">Chưa có câu trả lời</a><br>
-                                <p>
-                                    Đăng bởi:
-                                    <a href="">Nguyễn Văn Đình</a>
-                                    &emsp;Số câu trả lời: 0
-                                    &emsp;Lượt thích: 0
-                                </p>
-                            </div>
-                        </div>
+$result = mysqli_query($conn, 'select count(id_question) as total from question');
+$row = mysqli_fetch_assoc($result);
+$total_records = $row['total'];
+
+$current_page = isset($_GET['page']) ? $_GET['page'] : 1;
+$limit = 10;
+$total_page = ceil($total_records / $limit);
+
+if ($current_page > $total_page){
+    $current_page = $total_page;
+}
+else if ($current_page < 1){
+    $current_page = 1;
+}
+
+$start = ($current_page - 1) * $limit;
+$id = mysqli_real_escape_string($conn, $_GET['id']);
+$query = "SELECT * FROM question WHERE id_topic = $id LIMIT $start, $limit";
+$result = mysqli_query($conn, $query);
+
+?>
+                    <div>
+                        <?php
+
+                        if($result->num_rows >0){
+                            while ($row = mysqli_fetch_assoc($result)){
+                                $remove = $row['id_question']."rm";
+                                $edit = $row['id_question']."edit";
+                                echo"<div class='list-question'>";
+                                echo"<div class='card' id='question-item'>";
+                                echo"<div class='card-body'>";
+                                echo"<div class='row'>";
+                                echo"<div class='col-8'>";
+                                echo"<a href='http://localhost/Web-nhom-10/php/CauHoi.php?ques=".$row['id_question']."' class='title'>".$row['question']."</a><br>";
+                                echo"<a href='#' class='trangthaicauhoi'>".$row['detail']."</a><br>";
+                                echo"<p>";
+                                echo"Đăng bởi:";
+                                echo"<a href=''>".$row['user']."</a>";
+                                echo"&emsp;Ngày đăng: ".$row['time']."";
+                                echo"&emsp;Số câu trả lời: 0";
+                                echo"&emsp;Lượt thích: 0";
+                                echo"</p>";
+                                echo"</div>";
+                                echo"<div class='col-4'>";
+
+                                echo"<div class='row'>";
+                                echo"<form method='post' action=''>";
+                                echo"<div class='col-6'><input type='submit' class='btn btn-primary' name='$remove' alt='Submit' value='Xóa' /></div>";
+                                echo"</form>";
+                                echo"<form method='post' action='http://localhost/Web-nhom-10/php/SuaCauHoi.php?id=$id'>";
+                                echo"<div class='col-6'><input type='submit' class='btn btn-primary' name='$edit' alt='Submit' value='Sửa' /></div>";
+                                echo"</form>";
+                                echo"</div>";
+
+                                echo"</div>";
+                                echo"</div>";
+                                echo"</div>";
+                                echo"</div>";
+                                echo"</div>";
+                                echo"<br>";
+                            }
+                        }
+                        else{
+                        echo"<p>Fail.$conn->error.</p>";
+                        }
+                        ?>
                     </div>
-                </div>
-            </div>
-        </div>
+            <div class="pagination">
+            <?php
+            if ($current_page > 1 && $total_page > 1){
+             echo '<a href="ThaoLuan.php?id='.$id.'&page='.($current_page-1).'">Prev</a> | ';
+         }
+                     // Lặp khoảng giữa
+         for ($i = 1; $i <= $total_page; $i++){
+                         // Nếu là trang hiện tại thì hiển thị thẻ span
+                         // ngược lại hiển thị thẻ a
+             if ($i == $current_page){
+                 echo '<span>'.$i.'</span> | ';
+             }
+             else{
+                 echo '<a href="ThaoLuan.php?id='.$id.'&page='.$i.'">'.$i.'</a> | ';
+             }
+         }
+
+                     // nếu current_page < $total_page và total_page > 1 mới hiển thị nút prev
+
+         ?>
+         </div>
+         </div>
+         </div>
+         </div>
         <div class="text-center">
             <!-- Footer -->
             <a href="Trangchu.html#menu" style="border-radius: 75%;position:fixed;right:10%"><img src="btt.png"

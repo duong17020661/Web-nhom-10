@@ -197,7 +197,7 @@ $result = mysqli_query($conn, "SELECT * FROM topic LIMIT $start, $limit");
             echo"<div class='card-body'>";
             echo"<div class='row'>";
             echo"<div class='col-8'>";
-            echo"<a href='ThaoLuan.php' class='title'>".$row['topic']."</a><br>";
+            echo"<a href='http://localhost/Web-nhom-10/php/ThaoLuan.php?id=".$row['id_topic']."' class='title'>".$row['topic']."</a><br>";
             echo"<a href='#' class='trangthaicauhoi'>".$row['detail']."</a><br>";
             echo"<p>";
             echo"Đăng bởi:";

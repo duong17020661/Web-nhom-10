@@ -12,10 +12,11 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
 		die("Connection failed: " . $conn->connect_error);
 		exit();
 	}
+	date_default_timezone_set("Asia/Ho_Chi_Minh");
 	$topic = $_POST["topic"];
 	$detail = $_POST["detail"];
 	$user = $_SESSION['login'];
-	$time = date("Y/m/d");
+	$time = getdate(date("U"));
 	if(isset($_POST["create"])){
 		$qry = "insert into topic (topic,detail,user,time) values('$topic', '$detail','$user','$time');";
 		$res = $conn->query($qry);
