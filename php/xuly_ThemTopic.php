@@ -12,11 +12,11 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
 		die("Connection failed: " . $conn->connect_error);
 		exit();
 	}
-	date_default_timezone_set("Asia/Ho_Chi_Minh");
+	date_default_timezone_set('Asia/Ho_Chi_Minh');
 	$topic = $_POST["topic"];
 	$detail = $_POST["detail"];
 	$user = $_SESSION['login'];
-	$time = getdate(date("U"));
+	$time = date("Y-m-d");
 	if(isset($_POST["create"])){
 		$qry = "insert into topic (topic,detail,user,time) values('$topic', '$detail','$user','$time');";
 		$res = $conn->query($qry);
@@ -26,24 +26,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
 		}
 		else{
 			echo"<p>Fail.$conn->error.</p>";
-		}
-	}
-	$res1 = mysqli_query($conn, "SELECT id_topic FROM topic");
-	if($res1->num_rows >0){
-		while ($row = mysqli_fetch_assoc($res1)){
-			$id = $row['id_topic'];
-			$remove = $row['id_topic']."rm";
-			$edit = $row['id_topic']."edit";
-			if(isset($_POST["$remove"])){
-				$res2 = mysqli_query($conn, "DELETE FROM topic WHERE id_topic = $id");
-				if($res2)
-				{
-					header("Location: http://localhost/Web-nhom-10/php/TrangChu.php");
-				}
-				else{
-					echo"<p>Fail.$connect->error.</p>";
-				}
-			}
 		}
 	}
 

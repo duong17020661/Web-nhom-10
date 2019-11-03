@@ -93,6 +93,9 @@
         function taocauhoi(){
             var addtopic = window.open("ThemTopic.php", "Google", "width=700px,height=500px");
         };
+        function home(){
+                window.location.href='http://localhost/Web-nhom-10/php/TrangChu.php';
+        };
     </script>
 </head>
 
@@ -102,7 +105,7 @@
             <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
                 <!-- Menu -->
 
-                <h5 class="my-0 mr-md-auto font-weight-normal">Hỏi đáp trực tuyến</h5>
+                <h5 onClick=home() class="my-0 mr-md-auto font-weight-normal">Hỏi đáp trực tuyến</h5>
                 <nav class="my-2 my-md-0 mr-md-3" style="border-right:solid 1px black;padding-right:30px">
                     <a class="p-2 text-dark" href="#">Trang chủ</a>
                     <a class="p-2 text-dark" href="#">Quản lý</a>
@@ -136,12 +139,12 @@ $result = mysqli_query($conn, $query);
 $post = mysqli_fetch_assoc($result);
 if($_SERVER["REQUEST_METHOD"] == "POST")
 {
-    date_default_timezone_set("Asia/Ho_Chi_Minh");
+    date_default_timezone_set('Asia/Ho_Chi_Minh');
 	$question = $_POST["question"];
 	$id_topic = $id;
 	$detail = $_POST["detail"];
 	$user = $_SESSION['login'];
-	$time = getdate(date("U"));
+	$time = date("Y-m-d");
 	if(isset($_POST["create"])){
 		$qry = "insert into question (question,detail,user,time,id_topic) values('$question', '$detail','$user','$time','$id_topic');";
 		$res = $conn->query($qry);
@@ -274,37 +277,37 @@ $result = mysqli_query($conn, $query);
                                 $remove = $row['id_question']."rm";
                                 $edit = $row['id_question']."edit";
                                 echo"<div class='list-question'>";
-                                echo"<div class='card' id='question-item'>";
-                                echo"<div class='card-body'>";
-                                echo"<div class='row'>";
-                                echo"<div class='col-8'>";
-                                echo"<a href='http://localhost/Web-nhom-10/php/CauHoi.php?ques=".$row['id_question']."' class='title'>".$row['question']."</a><br>";
-                                echo"<a href='#' class='trangthaicauhoi'>".$row['detail']."</a><br>";
-                                echo"<p>";
-                                echo"Đăng bởi:";
-                                echo"<a href=''>".$row['user']."</a>";
-                                echo"&emsp;Ngày đăng: ".$row['time']."";
-                                echo"&emsp;Số câu trả lời: 0";
-                                echo"&emsp;Lượt thích: 0";
-                                echo"</p>";
-                                echo"</div>";
-                                echo"<div class='col-4'>";
-
-                                echo"<div class='row'>";
-                                echo"<form method='post' action=''>";
-                                echo"<div class='col-6'><input type='submit' class='btn btn-primary' name='$remove' alt='Submit' value='Xóa' /></div>";
-                                echo"</form>";
-                                echo"<form method='post' action='http://localhost/Web-nhom-10/php/SuaCauHoi.php?id=$id'>";
-                                echo"<div class='col-6'><input type='submit' class='btn btn-primary' name='$edit' alt='Submit' value='Sửa' /></div>";
-                                echo"</form>";
-                                echo"</div>";
-
-                                echo"</div>";
-                                echo"</div>";
-                                echo"</div>";
-                                echo"</div>";
-                                echo"</div>";
-                                echo"<br>";
+                    echo"<div class='card' id='question-item'>";
+                    echo"<div class='card-body'>";
+                    echo"<div class='row'>";
+                    echo"<div class='col-8'>";
+                    echo"<a href='http://localhost/Web-nhom-10/php/CauHoi.php?ques=".$row['id_question']."' class='title'>".$row['question']."</a><br>";
+                    echo"<a href='#' class='trangthaicauhoi'>".$row['detail']."</a><br>";
+                    echo"<p>";
+                    echo"Đăng bởi:";
+                    echo"<a href=''>".$row['user']."</a>";
+                    echo"&emsp;Ngày đăng: ".$row['time']."";
+                    echo"&emsp;<a href='' onClick='xoa(".$row['id_question'].")'>Xóa</a>";
+                    echo"&emsp;<a href='http://localhost/Web-nhom-10/php/SuaCauHoi.php?id=".$row['id_question']."'>Sửa</a>";
+                    echo"&emsp;Lượt thích: 0";
+                    echo"</p>";
+                    echo"</div>";
+                    ?>
+                    <script>
+                  
+                    function xoa(id){
+                        if(confirm("Bạn có chắc chắn muốn xóa")){
+                            window.location.href= 'http://localhost/Web-nhom-10/php/xoaCauHoi.php?id='+id;
+                            return true;
+                        }
+                    };
+                    </script>
+                    <?php
+                    echo"</div>";
+                    echo"</div>";
+                    echo"</div>";
+                    echo"</div>";
+                    echo"<br>";
                             }
                         }
                         else{
@@ -333,9 +336,7 @@ $result = mysqli_query($conn, $query);
 
          ?>
          </div>
-         </div>
-         </div>
-         </div>
+
         <div class="text-center">
             <!-- Footer -->
             <a href="Trangchu.html#menu" style="border-radius: 75%;position:fixed;right:10%"><img src="btt.png"

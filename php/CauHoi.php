@@ -9,12 +9,13 @@ $result = mysqli_query($conn, $query);
 $post = mysqli_fetch_assoc($result);
 if($_SERVER["REQUEST_METHOD"] == "POST")
 {
-    date_default_timezone_set("Asia/Ho_Chi_Minh");
+    date_default_timezone_set('Asia/Ho_Chi_Minh');
 	$answer = $_POST["answer"];
 	$user = $_SESSION['login'];
-	$time = getdate(date("U"));
+    $id_topic = $post['id_topic'];
+	$time = date("Y-m-d");
 	if(isset($_POST["create"])){
-		$qry = "insert into answer (answer,user,time,id_question) values('$answer','$user','$time','$id_question');";
+		$qry = "insert into answer (answer,user,time,id_question,id_topic) values('$answer','$user','$time','$id_question','$id_topic');";
 		$res = $conn->query($qry);
 		if($res)
 		{
@@ -122,6 +123,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
         function taocauhoi(){
             location.replace("http://localhost/Web-nhom-10/php/ThaoLuan.php?id=<?php echo $post['id_topic']?>");
         };
+        function home(){
+                window.location.href='http://localhost/Web-nhom-10/php/TrangChu.php';
+        };
     </script>
 </head>
 
@@ -131,7 +135,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
             <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
                 <!-- Menu -->
 
-                <h5 class="my-0 mr-md-auto font-weight-normal">Hỏi đáp trực tuyến</h5>
+                <h5 onClick=home() class="my-0 mr-md-auto font-weight-normal">Hỏi đáp trực tuyến</h5>
                 <nav class="my-2 my-md-0 mr-md-3" style="border-right:solid 1px black;padding-right:30px">
                     <a class="p-2 text-dark" href="#">Trang chủ</a>
                     <a class="p-2 text-dark" href="#">Quản lý</a>

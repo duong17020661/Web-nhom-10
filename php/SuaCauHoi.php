@@ -39,21 +39,14 @@ $id = mysqli_real_escape_string($conn, $_GET['id']);
                    <div class="form-group">
                       <label for="comment">Chủ đề:</label>
                       <?php
-                                    if($_SERVER["REQUEST_METHOD"] == "POST")
-                                    {
+                                    
+$id = mysqli_real_escape_string($conn, $_GET['id']);
+                    echo $id; 
 
-                                      $res1 = mysqli_query($conn, "SELECT id_question FROM question");
-                                      if($res1->num_rows >0){
-                                        while ($row = mysqli_fetch_assoc($res1)){
-                                          $question_id = $row['id_question'];
-                                          $edit = $row['id_question']."edit";
-                                          if(isset($_POST["$edit"])){
-
-                                            $res2 = mysqli_query($conn, "SELECT * FROM question WHERE id_question = $question_id");
-
-                                            if($res2->num_rows >0){
-                                              while ($row1 = mysqli_fetch_assoc($res2)){
-                                                echo"<textarea name='id' style='display:none;'>".$row1['id_question']."</textarea>";
+                                            $res2 = mysqli_query($conn, "SELECT * FROM question WHERE id_question = $id");
+                                            $row1 = mysqli_fetch_assoc($res2);
+                                   
+                                
                                                 echo"<textarea class='form-control' style='height:50px' id='comment' required name='question'>".$row1['question']."</textarea>";
                                                 echo"</div>";
                                                 echo"<br>";
@@ -61,22 +54,16 @@ $id = mysqli_real_escape_string($conn, $_GET['id']);
                                                 echo"<div class='form-group'>";
                                                 echo"<label for='comment'>Chi tiết:</label>";
                                                 echo"<textarea class='form-control' style='height:150px' id='comment' required name='detail'>".$row1['detail']."</textarea>";
-                                              }
-                                            }
-
-                                          }
-                                              }
-
-                                        }
-
-                                        $question_id = $_POST["id"];
+                                           
+                                        if($_SERVER["REQUEST_METHOD"] == "POST")
+                                    {
                                         $question = $_POST["question"];
                                         $detail = $_POST["detail"];
                                         if(isset($_POST["edit"])){
-                                          $res3 = mysqli_query($conn, "UPDATE question SET question = '$question',detail = '$detail' WHERE id_question = $question_id");
+                                          $res3 = mysqli_query($conn, "UPDATE question SET question = '$question',detail = '$detail' WHERE id_question = $id");
                                           if($res3)
                                           {
-                                            header("Location: http://localhost/Web-nhom-10/php/ThaoLuan.php?id=$id");
+                                            header("Location: http://localhost/Web-nhom-10/php/ThaoLuan.php?id=".$row1['id_topic']."");
                                           }
                                           else{
                                             echo"<p>Fail.$conn->error.</p>";

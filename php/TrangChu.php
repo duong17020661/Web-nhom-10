@@ -94,6 +94,9 @@
         function suacauhoi(){
             var addtopic = window.open("suaTopic.php", "Google", "width=700px,height=500px");  
         };
+        function home(){
+            window.location.href='http://localhost/Web-nhom-10/php/TrangChu.php';
+        };
     </script>
 </head>
 
@@ -103,10 +106,10 @@
 		<div id="menu">
 			<div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">	<!-- Menu -->
 
-				<h5 class="my-0 mr-md-auto font-weight-normal">Hỏi đáp trực tuyến</h5>
+				<h5 onClick=home() class="my-0 mr-md-auto font-weight-normal">Hỏi đáp trực tuyến</h5>
 				<nav class="my-2 my-md-0 mr-md-3" style="border-right:solid 1px black;padding-right:30px"> 
 					<a class="p-2 text-dark" href="#">Trang chủ</a>
-					<a class="p-2 text-dark" href="#">Quản lý</a>
+					<a class="p-2 text-dark" href="TrangCaNhan.php">Quản lý</a>
 				</nav>
 
 				<div class="dropdown"> <!-- Drop down -->
@@ -138,36 +141,49 @@
                     <div class="dropdown">
                         <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Danh sách các câu hỏi
+                        Danh sách các phiên thảo luận
                     </a>
 
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                        <a class="dropdown-item" href="#">Câu hỏi dạng thường</a>
-                        <a class="dropdown-item" href="#">Câu hỏi dạng radiobox</a>
-                        <a class="dropdown-item" href="#">Câu hỏi dạng checkbox</a>
+                        <a class="dropdown-item" href="#all">Tất cả các phiên thảo luận</a>
+                        <a class="dropdown-item" href="#open">Các phiên đang hoạt động</a>
+                        <a class="dropdown-item" href="#close">Các phiên đã đóng</a>
                     </div>
                 </div>
             </nav>
             <!--phần body-->
             <div class="card-body" id="question-body" style="background-color: #f2f2f2;">
-             <div class="row justify-content-between">
-              <div class="col-4">
+                <form method='post'>
+             <div class="row">
+              <div class="col">
                <div style="float:left">
                 <button id="taocauhoi" type="button" class="btn btn-info"><a  href="themTopic.php" style="color:white;">Tạo câu hỏi</a></button>
             </div>
         </div>
-        <br>
-        <div class="col-4">
-           <div class="search form-group has-search" style="float:right">	
+        <div class="col">
+            <div class="search form-group has-search" style="float:right;">
+
             <span class="fa fa-search form-control-feedback"></span>
-            <input type="text" class="form-control" placeholder="Search">
+            <input type="text" class="form-control" name=timkiem placeholder="Search">  
         </div>
     </div>
+    <div class="col">
+        <input class="btn btn-primary" type="submit"  value="Tìm kiếm" style="width:100px" name="search" style="float:left">
+    </div>
 </div>
+</form>
 <?php 
+
 $conn = mysqli_connect('localhost', 'root', '', 'q_a');
 
 $result = mysqli_query($conn, 'select count(id_topic) as total from topic');
+if($_SERVER["REQUEST_METHOD"] == "POST"){
+    if(isset($_POST['search'])){
+        $timkiem = $_POST['timkiem'];
+        echo $timkiem;
+        $result = mysqli_query($conn, "SELECT count(id_topic) as total FROM topic WHERE topic like '%$timkiem%'");
+    }
+}
 $row = mysqli_fetch_assoc($result);
 $total_records = $row['total'];
 
@@ -183,15 +199,20 @@ else if ($current_page < 1){
 }
 
 $start = ($current_page - 1) * $limit;
-$result = mysqli_query($conn, "SELECT * FROM topic LIMIT $start, $limit");
-
+$danhsach = mysqli_query($conn, "SELECT * FROM topic LIMIT $start, $limit");
+if($_SERVER["REQUEST_METHOD"] == "POST"){
+    if(isset($_POST['search'])){
+        $timkiem = $_POST['timkiem'];
+        echo $timkiem;
+        $danhsach = mysqli_query($conn, "SELECT * FROM topic WHERE topic like '%$timkiem%' LIMIT $start, $limit");
+    }
+}
 ?>
 <div>
     <?php
-    if($result->num_rows >0){
-        while ($row = mysqli_fetch_assoc($result)){
-            $remove = $row['id_topic']."rm";
-            $edit = $row['id_topic']."edit";
+    if($danhsach->num_rows >0){
+        while ($row = mysqli_fetch_assoc($danhsach)){
+
             echo"<div class='list-question'>";
             echo"<div class='card' id='question-item'>";
             echo"<div class='card-body'>";
@@ -203,22 +224,22 @@ $result = mysqli_query($conn, "SELECT * FROM topic LIMIT $start, $limit");
             echo"Đăng bởi:";
             echo"<a href=''>".$row['user']."</a>";
             echo"&emsp;Ngày đăng: ".$row['time']."";
-            echo"&emsp;Số câu trả lời: 0";
+            echo"&emsp;<a href='' onClick='xoa(".$row['id_topic'].")'>Xóa</a>";
+            echo"&emsp;<a href='http://localhost/Web-nhom-10/php/suaTopic.php?id=".$row['id_topic']."'>Sửa</a>";
             echo"&emsp;Lượt thích: 0";
             echo"</p>";
             echo"</div>";
-            echo"<div class='col-4'>";
+            ?>
+            <script>
 
-            echo"<div class='row'>";
-            echo"<form method='post' action='xuly_ThemTopic.php'>";
-            echo"<div class='col-6'><input type='submit' class='btn btn-primary' name='$remove' alt='Submit' value='Xóa' /></div>";
-            echo"</form>";
-            echo"<form method='post' action='suaTopic.php'>";
-            echo"<div class='col-6'><input type='submit' class='btn btn-primary' name='$edit' alt='Submit' value='Sửa' /></div>";
-            echo"</form>";
-            echo"</div>";
-
-            echo"</div>";
+                function xoa(id){
+                    if(confirm("Bạn có chắc chắn muốn xóa")){
+                        window.location.href= 'http://localhost/Web-nhom-10/php/xoaTopic.php?id='+id;
+                        return true;
+                    }
+                };
+            </script>
+            <?php
             echo"</div>";
             echo"</div>";
             echo"</div>";

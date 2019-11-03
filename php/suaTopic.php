@@ -41,8 +41,7 @@
              <div class="form-group">
               <label for="comment">Chủ đề:</label>
               <?php
-              if($_SERVER["REQUEST_METHOD"] == "POST")
-              {
+
                 $server = "localhost";
                 $user = "root";
                 $pass = "";
@@ -53,17 +52,12 @@
                   die("Connection failed: " . $conn->connect_error);
                   exit();
                 }
-                $res1 = mysqli_query($conn, "SELECT id_topic FROM topic");
-                if($res1->num_rows >0){
-                  while ($row = mysqli_fetch_assoc($res1)){
-                    $id = $row['id_topic'];
-                    $edit = $row['id_topic']."edit";
-                    if(isset($_POST["$edit"])){
+                
+                    $id = mysqli_real_escape_string($conn, $_GET['id']);
+                    echo $id; 
                       
-                      $res2 = mysqli_query($conn, "SELECT * FROM topic WHERE id_topic = $id");
-
-                      if($res2->num_rows >0){
-                        while ($row1 = mysqli_fetch_assoc($res2)){
+                      $res2 = mysqli_query($conn, "SELECT * FROM topic WHERE id_topic = '$id'");
+                      $row1 = mysqli_fetch_assoc($res2);
                           echo"<textarea name='id' style='display:none;'>".$row1['id_topic']."</textarea>";
                           echo"<textarea class='form-control' style='height:50px' id='comment' required name='topic'>".$row1['topic']."</textarea>";
                           echo"</div>";
@@ -72,18 +66,12 @@
                           echo"<div class='form-group'>";
                           echo"<label for='comment'>Chi tiết:</label>";
                           echo"<textarea class='form-control' style='height:150px' id='comment' required name='detail'>".$row1['detail']."</textarea>";
-                        }
-                      }
-                      
-                    }
-                        }
-
-                  }
-                  $topic_id = $_POST["id"];
+                                 if($_SERVER["REQUEST_METHOD"] == "POST")
+              { 
                   $topic = $_POST["topic"];
                   $detail = $_POST["detail"];
                   if(isset($_POST["edit"])){
-                    $res3 = mysqli_query($conn, "UPDATE topic SET topic = '$topic',detail = '$detail' WHERE id_topic = $topic_id");
+                    $res3 = mysqli_query($conn, "UPDATE topic SET topic = '$topic',detail = '$detail' WHERE id_topic = $id");
                     if($res3)
                     {
                       header("Location: http://localhost/Web-nhom-10/php/TrangChu.php");
