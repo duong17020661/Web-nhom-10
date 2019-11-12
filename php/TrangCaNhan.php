@@ -103,7 +103,7 @@ if(mysqli_connect_error())
   exit();
 }
     $user = $_SESSION['login'];
-    $thongtin = mysqli_query($conn,"SELECT * FROM user WHERE username = 'duongcoibs'");
+    $thongtin = mysqli_query($conn,"SELECT * FROM user WHERE username = '$user'");
     $row_thongtin = mysqli_fetch_assoc($thongtin);
     echo $row_thongtin['first_name'];
 ?>
@@ -116,7 +116,7 @@ if(mysqli_connect_error())
 
             <h5 class="my-0 mr-md-auto font-weight-normal">Hỏi đáp trực tuyến</h5>
             <nav class="my-2 my-md-0 mr-md-3" style="border-right:solid 1px black;padding-right:30px">
-                <a class="p-2 text-dark" href="#">Trang chủ</a>
+                <a class="p-2 text-dark" href="Trangchu.php">Trang chủ</a>
                 <a class="p-2 text-dark" href="#">Quản lý</a>
             </nav>
 
@@ -191,13 +191,13 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
         $res3 = mysqli_query($conn, "UPDATE user SET last_name = '$last_name' ,first_name = '$first_name',email = '$email' WHERE username = '$user'");
         if($res3)
         {
-
+            
         }
         else{
           echo"<p>Fail.$conn->error.</p>";
       }
   }
-
+header("Location: http://localhost/Web-nhom-10/php/TrangCaNhan.php");
 }
 ?>
 <div class="shadow p-3 mb-5 bg-white rounded" width="">
