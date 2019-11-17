@@ -102,20 +102,22 @@ function filter_login_input($loginData)
 				<div class="panel-body form-signin">
 					<input placeholder="Tên đăng nhập" class = "form-control" name="username" type="text">
 					<input placeholder="Mật khẩu" class="form-control" name="password" type="password">
-					<br></br>
 					<div class="row">
-						<div class="col-md-6">
-							<?php
+					    <div class="col">
+					      <?php
 							if(isset($loginCheck))
 							{
 								echo '<script type="text/javascript">alert("Tài khoản hoặc mật khẩu chưa đúng!");</script>';
 							}
 							?>
-						</div>
-						<div class="col-md-2">
-							<input type="submit" class="btn btn-success" value="ĐĂNG NHẬP">
-						</div>
-					</div>
+							<a href="TrangChu.php"  >Truy cập không cần đăng nhập</a>
+					    </div>
+					    <div class="col-md-auto">
+					    </div>
+					    <div class="col col-lg-2">
+					      <input type="submit" class="btn btn-success" value="ĐĂNG NHẬP" style="float:right">
+					    </div>
+					  </div>
 				</div>
 			</form>
 		</div>

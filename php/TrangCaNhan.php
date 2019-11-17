@@ -114,7 +114,7 @@ if(mysqli_connect_error())
             class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
             <!-- Menu -->
 
-            <h5 class="my-0 mr-md-auto font-weight-normal">Hỏi đáp trực tuyến</h5>
+            <a onClick=home() class="my-0 mr-md-auto font-weight-normal"><img src="images/logo.png" height="50px"></a>
             <nav class="my-2 my-md-0 mr-md-3" style="border-right:solid 1px black;padding-right:30px">
                 <a class="p-2 text-dark" href="Trangchu.php">Trang chủ</a>
                 <a class="p-2 text-dark" href="#">Quản lý</a>

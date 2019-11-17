@@ -106,7 +106,7 @@
 		<div id="menu">
 			<div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">	<!-- Menu -->
 
-				<h5 onClick=home() class="my-0 mr-md-auto font-weight-normal">Hỏi đáp trực tuyến</h5>
+				<a onClick=home() class="my-0 mr-md-auto font-weight-normal"><img src="images/logo.png" height="50px"></a>
 				<nav class="my-2 my-md-0 mr-md-3" style="border-right:solid 1px black;padding-right:30px"> 
 					<a class="p-2 text-dark" href="#">Trang chủ</a>
 					<a class="p-2 text-dark" href="TrangCaNhan.php">Quản lý</a>
@@ -166,8 +166,10 @@
             <form method='post'>
                <div class="row">
                   <div class="col">
-                     <div style="float:left">
-                        <button id="taocauhoi" type="button" class="btn btn-info"><a  href="themTopic.php" style="color:white;">Tạo thảo luận</a></button>
+                     <div style="float:left"><?php
+                     if($_SESSION['login'] != '' || $_SESSION['login'] == "admin"){
+                        echo"<button id='taocauhoi' type='button' class='btn btn-info'><a  href='themTopic.php' style='color:white;'>Tạo thảo luận</a></button>";
+                    }?>
                     </div>
                 </div>
                 <div class="col">
@@ -219,10 +221,12 @@
         }
         ?>
         <div>
+            <form action="">
+
+           
             <?php
             if($danhsach->num_rows >0){
                 while ($row = mysqli_fetch_assoc($danhsach)){
-
                     echo"<div class='list-question'>";
                     echo"<div class='card' id='question-item'>";
                     echo"<div class='card-body'>";
@@ -234,22 +238,13 @@
                     echo"Đăng bởi:";
                     echo"<a href=''>".$row['user']."</a>";
                     echo"&emsp;Ngày đăng: ".$row['time']."";
-                    echo"&emsp;<a href='' onClick='xoa(".$row['id_topic'].")'>Xóa</a>";
+                    if($_SESSION['login'] == $row['user'] || $_SESSION['login'] == "admin"){
+                    echo"&emsp;<a href=\"xoaTopic.php?id=$row[id_topic]\" onClick=\"return confirm('Bạn có chắc chắn muốn xóa không?')\">Xóa</a>";
                     echo"&emsp;<a href='http://localhost/Web-nhom-10/php/suaTopic.php?id=".$row['id_topic']."'>Sửa</a>";
+                }
                     echo"&emsp;Lượt thích: 0";
                     echo"</p>";
                     echo"</div>";
-                    ?>
-                    <script>
-
-                        function xoa(id){
-                            if(confirm("Bạn có chắc chắn muốn xóa")){
-                                window.location.href= 'http://localhost/Web-nhom-10/php/xoaTopic.php?id='+id;
-                                return true;
-                            }
-                        };
-                    </script>
-                    <?php
                     echo"</div>";
                     echo"</div>";
                     echo"</div>";
@@ -258,6 +253,7 @@
                 }
             }
             ?>
+             </form>
         </div>
         <div class="pagination">
          <?php 
@@ -341,7 +337,9 @@
             </div>
         </div>
     </div>
+    
 </form>
+
 <?php
 if($_SERVER['REQUEST_METHOD'] == "POST"){
     $full_name = $_POST["name"];
@@ -358,8 +356,9 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
         else{
           echo"<p>Fail.$conn->error.</p>";
       }
-      header("Location: http://localhost/Web-nhom-10/php/TrangChu.php");
-  }
+      echo '<script>window.location.href = "http://localhost/Web-nhom-10/php/TrangChu.php";</script>';
+      
   
+}
 }
 ?>

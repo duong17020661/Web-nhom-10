@@ -105,9 +105,9 @@
             <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
                 <!-- Menu -->
 
-                <h5 onClick=home() class="my-0 mr-md-auto font-weight-normal">Hỏi đáp trực tuyến</h5>
+                <a onClick=home() class="my-0 mr-md-auto font-weight-normal"><img src="images/logo.png" height="50px"></a>
                 <nav class="my-2 my-md-0 mr-md-3" style="border-right:solid 1px black;padding-right:30px">
-                    <a class="p-2 text-dark" href="#">Trang chủ</a>
+                    <a class="p-2 text-dark" href="TrangChu.php">Trang chủ</a>
                     <a class="p-2 text-dark" href="#">Quản lý</a>
                 </nav>
 
@@ -233,8 +233,10 @@ $res1 = mysqli_query($conn, "SELECT id_question FROM question");
                 <div class="card-body" id="question-body" style="background-color: #f2f2f2;">
                     <div class="row justify-content-between">
 						<div class="col-4">
-							<div style="float:left">
-								<button id="taocauhoi" type="button" class="btn btn-info"><a  href="http://localhost/Web-nhom-10/php/TaoCauHoi.php?id=<?php echo $id?>" style="color:white;">Tạo câu hỏi</a></button>
+							<div style="float:left"><?php
+                                if($_SESSION['login'] != '' || $_SESSION['login'] == "admin"){
+								echo"<button id='taocauhoi' type='button' class='btn btn-info'><a  href='http://localhost/Web-nhom-10/php/TaoCauHoi.php?id=$id' style='color:white;'>Tạo câu hỏi</a></button>";
+                                }?>
 							</div>
 						</div>
                     <br>
@@ -287,8 +289,10 @@ $result = mysqli_query($conn, $query);
                     echo"Đăng bởi:";
                     echo"<a href=''>".$row['user']."</a>";
                     echo"&emsp;Ngày đăng: ".$row['time']."";
+                    if($_SESSION['login'] == $row['user'] || $_SESSION['login'] == "admin"){
                     echo"&emsp;<a href='' onClick='xoa(".$row['id_question'].")'>Xóa</a>";
                     echo"&emsp;<a href='http://localhost/Web-nhom-10/php/SuaCauHoi.php?id=".$row['id_question']."'>Sửa</a>";
+                }
                     echo"&emsp;Lượt thích: 0";
                     echo"</p>";
                     echo"</div>";

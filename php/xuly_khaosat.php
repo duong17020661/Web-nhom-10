@@ -1,4 +1,5 @@
 <?php
+session_start(); 
 $conn = mysqli_connect('localhost', 'root', '', 'q_a');
 $id = 1;/*mysqli_real_escape_string($conn, $_GET['id'])*/
 /*-----CHECKBOX-----*/
