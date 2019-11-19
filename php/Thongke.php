@@ -12,11 +12,24 @@ $n = $conn->query($query1);
 $cb = $conn->query($query2);
 $rb = $conn->query($query3);
 
-
-	$sum = "SELECT MAX(id_ans_n) as sum FROM n_answer WHERE id_survey = $id";
-    $re = $conn->query($sum);
-    $sum_ans = mysqli_fetch_assoc($re);
-    $id_ans = $sum_ans['sum'];
+  $id_ans;
+	$sum1 = "SELECT MAX(id_ans_n) as sum FROM n_answer WHERE id_survey = $id";
+  $sum2 = "SELECT MAX(id_ans_cb) as sum FROM cb_answer WHERE id_survey = $id";
+  $sum3 = "SELECT MAX(id_ans_rb) as sum FROM rb_answer WHERE id_survey = $id";
+    $re1 = $conn->query($sum1);
+    $sum_ans1 = mysqli_fetch_assoc($re1);
+        $re2 = $conn->query($sum2);
+    $sum_ans2 = mysqli_fetch_assoc($re2);
+        $re3 = $conn->query($sum3);
+    $sum_ans3 = mysqli_fetch_assoc($re3);
+    if($sum_ans1['sum']!=0){
+    $id_ans = $sum_ans1['sum'];
+    }
+    else if($sum_ans2['sum']!=0){
+    $id_ans = $sum_ans2['sum'];
+    }else if($sum_ans3['sum']!=0){
+    $id_ans = $sum_ans3['sum'];
+  }
 ?>
 <!DOCTYPE html>
 <html>

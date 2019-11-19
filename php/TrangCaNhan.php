@@ -104,9 +104,7 @@ if(mysqli_connect_error())
 }
     $user = $_SESSION['login'];
     $thongtin = mysqli_query($conn,"SELECT * FROM user WHERE username = '$user'");
-    $row_thongtin = mysqli_fetch_assoc($thongtin);
-    echo $row_thongtin['first_name'];
-?>
+    $row_thongtin = mysqli_fetch_assoc($thongtin);?>
 <body>
     <div class="container">
         <div id="menu">
@@ -185,17 +183,9 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
     $name = explode(" ", $full_name, 2 );
     $last_name = $name[0];
     $first_name = $name[1];
-    echo $last_name." ".$first_name;
     $email = $_POST["email"];
     if(isset($_POST['update'])){
         $res3 = mysqli_query($conn, "UPDATE user SET last_name = '$last_name' ,first_name = '$first_name',email = '$email' WHERE username = '$user'");
-        if($res3)
-        {
-            
-        }
-        else{
-          echo"<p>Fail.$conn->error.</p>";
-      }
   }
 header("Location: http://localhost/Web-nhom-10/php/TrangCaNhan.php");
 }
@@ -265,7 +255,6 @@ header("Location: http://localhost/Web-nhom-10/php/TrangCaNhan.php");
             $start = ($current_page - 1) * $limit;
             $id = mysqli_real_escape_string($conn, $_GET['id']);
             $danhsach = mysqli_query($conn,"SELECT * FROM question WHERE user = '$user' LIMIT $start, $limit");
-
             ?>
             <div>
                 <?php
@@ -296,7 +285,7 @@ header("Location: http://localhost/Web-nhom-10/php/TrangCaNhan.php");
                     }
                 }
                 else{
-                    echo"<p>Fail.$conn->error.</p>";
+                    echo"";
                 }
                 ?>
             </div>

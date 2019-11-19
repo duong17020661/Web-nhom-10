@@ -164,8 +164,10 @@
             <form method='post'>
                <div class="row">
                   <div class="col">
-                     <div style="float:left">
-                        <button id="taocauhoi" type="button" class="btn btn-info"><a  href="Taophieukhaosat.php" style="color:white;">Tạo khảo sát</a></button>
+                     <div style="float:left"><?php
+                     if($_SESSION['login'] != '' || $_SESSION['login'] == "admin"){
+                        echo"<button id='taocauhoi' type='button' class='btn btn-info'><a  href='Taophieukhaosat.php' style='color:white;'>Tạo thảo luận</a></button>";
+                    }?>
                     </div>
                 </div>
                 <div class="col">
@@ -188,7 +190,6 @@
         if($_SERVER["REQUEST_METHOD"] == "POST"){
             if(isset($_POST['search'])){
                 $timkiem = $_POST['timkiem'];
-                echo $timkiem;
                 $result = mysqli_query($conn, "SELECT count(id_survey) as total FROM survey WHERE survey like '%$timkiem%'");
             }
         }
@@ -211,7 +212,6 @@
         if($_SERVER["REQUEST_METHOD"] == "POST"){
             if(isset($_POST['search'])){
                 $timkiem = $_POST['timkiem'];
-                echo $timkiem;
                 $danhsach = mysqli_query($conn, "SELECT * FROM survey WHERE survey like '%$timkiem%' LIMIT $start, $limit");
             }
         }

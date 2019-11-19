@@ -245,19 +245,19 @@ $id = mysqli_real_escape_string($conn, $_GET['id']);
   var k=0;
   function add_cb(){
     if(k==0){
-      var cauhoi = "<input type='text' class='form-control' name='cauhoi_cb0' placeholder='Viết câu hỏi'><br><div class='dapan_cb0'></div><div class='dapan_cb0'></div><a href=# onclick='add_dapan_cb0()'>Thêm đáp án</a>";
+      var cauhoi = "<input type='text' class='form-control' name='cauhoi_cb0' placeholder='Viết câu hỏi'><br><div class='dapan_cb0'></div><div class='dapan_cb0'></div><div class='dapan_cb0'></div><div class='dapan_cb0'></div><a href=# onclick='add_dapan_cb0()'>Thêm đáp án</a>";
       var y = document.getElementsByClassName("cauhoi_cb");
       y[k].innerHTML = cauhoi;
       k++;
   }
   else if(k==1){
-    var cauhoi = "<input type='text' class='form-control' name='cauhoi_cb1' placeholder='Viết câu hỏi'><br><div class='dapan_cb1'></div><div class='dapan_cb1'></div><a href=# onclick='add_dapan_cb1()'>Thêm đáp án</a>";
+    var cauhoi = "<input type='text' class='form-control' name='cauhoi_cb1' placeholder='Viết câu hỏi'><br><div class='dapan_cb1'></div><div class='dapan_cb1'></div><div class='dapan_cb1'></div><div class='dapan_cb1'></div><a href=# onclick='add_dapan_cb1()'>Thêm đáp án</a>";
     var y = document.getElementsByClassName("cauhoi_cb");
     y[k].innerHTML = cauhoi;
     k++;
 }
 else if(k==2){
-    var cauhoi = "<input type='text' class='form-control' name='cauhoi_cb2' placeholder='Viết câu hỏi'><br><div class='dapan_cb2'></div><div class='dapan_cb2'></div><a href=# onclick='add_dapan_cb2()'>Thêm đáp án</a>";
+    var cauhoi = "<input type='text' class='form-control' name='cauhoi_cb2' placeholder='Viết câu hỏi'><br><div class='dapan_cb2'></div><div class='dapan_cb2'></div><div class='dapan_cb2'></div><div class='dapan_cb2'></div><a href=# onclick='add_dapan_cb2()'>Thêm đáp án</a>";
     var y = document.getElementsByClassName("cauhoi_cb");
     y[k].innerHTML = cauhoi;
     k++;
@@ -289,19 +289,19 @@ function add_dapan_cb2(){
 var l=0;
   function add_rb(){
     if(l==0){
-      var cauhoi = "<input type='text' class='form-control' name='cauhoi_rb0' placeholder='Viết câu hỏi'><br><div class='dapan_rb0'></div><div class='dapan_rb0'></div><a href=#a onclick='add_dapan_rb0()'>Thêm đáp án</a>";
+      var cauhoi = "<input type='text' class='form-control' name='cauhoi_rb0' placeholder='Viết câu hỏi'><br><div class='dapan_rb0'></div><div class='dapan_rb0'></div><div class='dapan_rb0'></div><div class='dapan_rb0'></div><a href=#a onclick='add_dapan_rb0()'>Thêm đáp án</a>";
       var z = document.getElementsByClassName("cauhoi_rb");
       z[l].innerHTML = cauhoi;
       l++;
   }
   else if(l==1){
-    var cauhoi = "<input type='text' class='form-control' name='cauhoi_rb1' placeholder='Viết câu hỏi'><br><div class='dapan_rb1'></div><div class='dapan_rb1'></div><a href=#a onclick='add_dapan_rb1()'>Thêm đáp án</a>";
+    var cauhoi = "<input type='text' class='form-control' name='cauhoi_rb1' placeholder='Viết câu hỏi'><br><div class='dapan_rb1'></div><div class='dapan_rb1'></div><div class='dapan_rb1'></div><div class='dapan_rb1'></div><a href=#a onclick='add_dapan_rb1()'>Thêm đáp án</a>";
     var z = document.getElementsByClassName("cauhoi_rb");
     z[l].innerHTML = cauhoi;
     l++;
 }
 else if(l==2){
-    var cauhoi = "<input type='text' class='form-control' name='cauhoi_rb2' placeholder='Viết câu hỏi'><br><div class='dapan_rb2'></div><div class='dapan_rb2'></div><a href=#a onclick='add_dapan_rb2()'>Thêm đáp án</a>";
+    var cauhoi = "<input type='text' class='form-control' name='cauhoi_rb2' placeholder='Viết câu hỏi'><br><div class='dapan_rb2'></div><div class='dapan_rb2'></div><div class='dapan_rb2'></div><div class='dapan_rb2'></div><a href=#a onclick='add_dapan_rb2()'>Thêm đáp án</a>";
     var z = document.getElementsByClassName("cauhoi_rb");
     z[l].innerHTML = cauhoi;
     l++;

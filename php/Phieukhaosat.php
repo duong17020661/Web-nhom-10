@@ -99,7 +99,24 @@ $rb = $conn->query($query3);
     else{
         $id_ans = 1;
     }
-    echo $id_ans;
+    $sum1 = "SELECT MAX(id_ans_cb) as sum FROM cb_answer WHERE id_survey = $id";
+    $re1 = $conn->query($sum1);
+    if($re1->num_rows > 0){
+    $sum_ans1 = mysqli_fetch_assoc($re1);
+        $id_ans1 = $sum_ans1['sum']+1;
+    }
+    else{
+        $id_ans1 = 1;
+    }
+    $sum2 = "SELECT MAX(id_ans_rb) as sum FROM rb_answer WHERE id_survey = $id";
+    $re2 = $conn->query($sum2);
+    if($re2->num_rows > 0){
+    $sum_ans2 = mysqli_fetch_assoc($re2);
+        $id_ans2 = $sum_ans2['sum']+1;
+    }
+    else{
+        $id_ans2 = 1;
+    }
     if($_SERVER["REQUEST_METHOD"] == "POST"){
         $num1 = "SELECT id_n FROM n_question WHERE id_survey = $id";
         $num2 = "SELECT id_cb FROM cb_question WHERE id_survey = $id";
@@ -112,8 +129,11 @@ $rb = $conn->query($query3);
     while ($id_cb = mysqli_fetch_assoc($result2)){
         $i = $id_cb['id_cb'];
         $cb = $_POST['cb'.$i];
-        $ans_cb = $cb[0]."/".$cb[1];
-        $query = "INSERT INTO cb_answer (id_ans_cb,answer_cb,id_cb,id_survey) VALUES ('$id_ans','$ans_cb','$i','$id');";
+        $ans_cb = $cb[0];
+        for($j=0;$j<count($cb)-1;$j++){
+            $ans_cb = $ans_cb.'/'.$cb[$j+1];
+        }
+        $query = "INSERT INTO cb_answer (id_ans_cb,answer_cb,id_cb,id_survey) VALUES ('$id_ans1','$ans_cb','$i','$id');";
         $res = $conn->query($query);
     }
 
@@ -124,7 +144,7 @@ echo $result3->num_rows;
     while ($id_rb = mysqli_fetch_assoc($result3)){
         $i = $id_rb['id_rb'];
         $rb = $_POST['rb'.$i];
-        $query = "INSERT INTO rb_answer (id_ans_rb,answer_rb,id_rb,id_survey) VALUES ('$id_ans','$rb','$i','$id');";
+        $query = "INSERT INTO rb_answer (id_ans_rb,answer_rb,id_rb,id_survey) VALUES ('$id_ans2','$rb','$i','$id');";
         $res = $conn->query($query);
     }
 

@@ -28,16 +28,14 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
         for($i=0;$i<count($dapan_cb0)-1;$i++){
             $dapan0 = $dapan0.'/'.$dapan_cb0[$i+1];
         }
-        $dapan0 = $dapan_cb0[0].'/'.$dapan_cb0[1];
         $query = "INSERT INTO cb_question (cb_question,all_answer_cb,id_survey) VALUES ('$cauhoi_cb0','$dapan0','$id');";
         $res = $conn->query($query);
     }
     if($cauhoi_cb1 != ''){
         $dapan1 = $dapan_cb1[0];
-        for($i=0;$i<count($dapan_cb)-1;$i++){
-            $dapan1 = $dapan0.'/'.$dapan_cb1[$i+1];
+        for($i=0;$i<count($dapan_cb1)-1;$i++){
+            $dapan1 = $dapan1.'/'.$dapan_cb1[$i+1];
         }
-        $dapan1 = $dapan_cb1[0].'/'.$dapan_cb1[1];
         $query = "INSERT INTO cb_question (cb_question,all_answer_cb,id_survey) VALUES ('$cauhoi_cb1','$dapan1','$id');";
         $res = $conn->query($query);
     }
@@ -46,7 +44,6 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
         for($i=0;$i<count($dapan_cb2)-1;$i++){
             $dapan2 = $dapan2.'/'.$dapan_cb2[$i+1];
         }
-        $dapan2 = $dapan_cb2[0].'/'.$dapan_cb2[1];
         $query = "INSERT INTO cb_question (cb_question,all_answer_cb,id_survey) VALUES ('$cauhoi_cb2','$dapan2','$id');";
         $res = $conn->query($query);
     }
@@ -76,7 +73,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
         for($i=0;$i<count($dapan_rb1)-1;$i++){
             $dapan1 = $dapan1.'/'.$dapan_rb1[$i+1];
         }
-        $dapan1 = $dapan_rb1[0].'/'.$dapan_rb1[1];
+
         $query = "INSERT INTO rb_question (rb_question,all_answer_rb,id_survey) VALUES ('$cauhoi_rb1','$dapan1','$id');";
         $res = $conn->query($query);
     }
@@ -85,7 +82,6 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
         for($i=0;$i<count($dapan_rb2)-1;$i++){
             $dapan2 = $dapan2.'/'.$dapan_rb2[$i+1];
         }
-        $dapan2 = $dapan_rb2[0].'/'.$dapan_rb2[1];
         $query = "INSERT INTO rb_question (rb_question,all_answer_rb,id_survey) VALUES ('$cauhoi_rb2','$dapan2','$id');";
         $res = $conn->query($query);
     }
@@ -104,7 +100,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
     $survey = $_POST['survey'];
     $user = $_SESSION['login'];
     $time = date("Y-m-d");
-    $qry = "insert into survey (survey,user,time) values('$survey','$user','$time');";
+    $qry = "insert into survey (survey,user,time,id_survey) values('$survey','$user','$time','$id');";
     $res = $conn->query($qry);
     header("Location: http://localhost/Web-nhom-10/php/Phieukhaosat.php?id=".$id."");
 }

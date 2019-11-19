@@ -148,18 +148,6 @@
                 <h4 class="my-0 mr-md-auto font-weight-normal"><img src="images/question.png" height="40px"
                     width="auto" /> Danh sách các câu hỏi</h5>
                 </div>
-                <div class="dropdown">
-                    <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
-                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Danh sách các phiên thảo luận
-                </a>
-
-                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                    <a class="dropdown-item" href="#all">Tất cả các phiên thảo luận</a>
-                    <a class="dropdown-item" href="#open">Các phiên đang hoạt động</a>
-                    <a class="dropdown-item" href="#close">Các phiên đã đóng</a>
-                </div>
-            </div>
         </nav>
         <!--phần body-->
         <div class="card-body" id="question-body" style="background-color: #f2f2f2;">
@@ -192,7 +180,6 @@
         if($_SERVER["REQUEST_METHOD"] == "POST"){
             if(isset($_POST['search'])){
                 $timkiem = $_POST['timkiem'];
-                echo $timkiem;
                 $result = mysqli_query($conn, "SELECT count(id_topic) as total FROM topic WHERE topic like '%$timkiem%'");
             }
         }
@@ -215,7 +202,6 @@
         if($_SERVER["REQUEST_METHOD"] == "POST"){
             if(isset($_POST['search'])){
                 $timkiem = $_POST['timkiem'];
-                echo $timkiem;
                 $danhsach = mysqli_query($conn, "SELECT * FROM topic WHERE topic like '%$timkiem%' LIMIT $start, $limit");
             }
         }
@@ -227,6 +213,9 @@
             <?php
             if($danhsach->num_rows >0){
                 while ($row = mysqli_fetch_assoc($danhsach)){
+                    $sum_question = $row['id_topic'];
+                    $socauhoi = mysqli_query($conn, "SELECT COUNT(*) as sum FROM question WHERE id_topic = $sum_question");
+                    $sum = mysqli_fetch_assoc($socauhoi);
                     echo"<div class='list-question'>";
                     echo"<div class='card' id='question-item'>";
                     echo"<div class='card-body'>";
@@ -242,7 +231,7 @@
                     echo"&emsp;<a href=\"xoaTopic.php?id=$row[id_topic]\" onClick=\"return confirm('Bạn có chắc chắn muốn xóa không?')\">Xóa</a>";
                     echo"&emsp;<a href='http://localhost/Web-nhom-10/php/suaTopic.php?id=".$row['id_topic']."'>Sửa</a>";
                 }
-                    echo"&emsp;Lượt thích: 0";
+                    echo"&emsp;Số câu hỏi: ".$sum['sum']."";
                     echo"</p>";
                     echo"</div>";
                     echo"</div>";
